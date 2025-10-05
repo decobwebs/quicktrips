@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Quick Trips</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#068cf9',
+                        'background-light': '#f5f7f8',
+                        'background-dark': '#0f1a23',
+                    },
+                    fontFamily: {
+                        display: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    borderRadius: {
+                        DEFAULT: '0.25rem',
+                        lg: '0.5rem',
+                        xl: '0.75rem',
+                        full: '9999px',
+                    },
+                },
+            },
+        };
+    </script>
+    <style>
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        body {
+            min-height: max(884px, 100dvh);
+        }
+        .skeleton {
+            background: linear-gradient(90deg, #e2e8f0 25%, #f5f7f8 50%, #e2e8f0 75%);
+            background-size: 200% 100%;
+            animation: skeleton-loading 1.5s infinite linear;
+        }
+        @keyframes skeleton-loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+        .skeleton-img {
+            visibility: hidden;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+    <div class="relative flex min-h-screen w-full flex-col justify-between overflow-x-hidden skeleton">
+        <div class="flex-grow skeleton">
+            <header class="sticky top-0 z-10 flex items-center justify-between bg-background-light/80 px-4 py-3 lg:px-12 backdrop-blur-sm dark:bg-background-dark/80 skeleton">
+                <a href="#" class="flex items-center skeleton">
+                    <div class="h-10 w-32 skeleton"></div>
+                    <img src="assets/logo.png" alt="Quick Trips Logo" class="h-10 w-auto skeleton-img" onload="this.classList.remove('skeleton-img')">
+                </a>
+                
+            
+            </header>
+            <main class="pb-24 skeleton">
+                
+                <section class="py-4 skeleton">
+                    <h2 class="px-4 text-xl font-bold text-slate-900 dark:text-white skeleton">
+                        Popular Routes with Quick Trips
+                    </h2>
+                    <div class="no-scrollbar mt-3 flex snap-x snap-mandatory scroll-pl-4 space-x-4 overflow-x-auto px-4 skeleton">
+                        <div class="w-64 min-w-[16rem] snap-start skeleton">
+                            <div class="aspect-video w-full overflow-hidden rounded-lg skeleton">
+                                <img alt="Quick Trips Mountain Retreat" class="h-full w-full object-cover skeleton-img" src="assets/hajj.jpg" onload="this.classList.remove('skeleton-img')"/>
+                            </div>
+                            <div class="mt-2 skeleton">
+                                <p class="font-semibold text-slate-900 dark:text-white">
+                                    Hajj and Umrah
+                                <p class="text-sm text-slate-600 dark:text-slate-400">
+                                    Embark on a sacred journey with comfort, care, and trusted guidance with Quick Trips.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="w-64 min-w-[16rem] snap-start skeleton">
+                            <div class="aspect-video w-full overflow-hidden rounded-lg skeleton">
+                                <img alt="Quick Trips Beach Getaway" class="h-full w-full object-cover skeleton-img" src="assets/dubai.jpg" onload="this.classList.remove('skeleton-img')"/>
+                            </div>
+                            <div class="mt-2 skeleton">
+                                <p class="font-semibold text-slate-900 dark:text-white">
+                                    Dubai Getaway
+                                </p>
+                                <p class="text-sm text-slate-600 dark:text-slate-400">
+                                    Discover luxury, desert adventures, and dazzling city lights in Dubai.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="w-64 min-w-[16rem] snap-start skeleton">
+                            <div class="aspect-video w-full overflow-hidden rounded-lg skeleton">
+                                <img alt="Quick Trips City Exploration" class="h-full w-full object-cover skeleton-img" src="assets/african.jpg" onload="this.classList.remove('skeleton-img')"/>
+                            </div>
+                            <div class="mt-2 skeleton">
+                                <p class="font-semibold text-slate-900 dark:text-white">
+                                    African Safari Adventure
+                                </p>
+                                <p class="text-sm text-slate-600 dark:text-slate-400">
+                                   Experience the thrill of wildlife and breathtaking landscapes across Africa.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="w-64 min-w-[16rem] snap-start skeleton">
+                            <div class="aspect-video w-full overflow-hidden rounded-lg skeleton">
+                                <img alt="Quick Trips City Exploration" class="h-full w-full object-cover skeleton-img" src="assets/family-vacation.jpg" onload="this.classList.remove('skeleton-img')"/>
+                            </div>
+                            <div class="mt-2 skeleton">
+                                <p class="font-semibold text-slate-900 dark:text-white">
+                                    Family Vacation
+                                </p>
+                                <p class="text-sm text-slate-600 dark:text-slate-400">
+                                   Create lasting memories with family-friendly packages to exciting destinations.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="w-64 min-w-[16rem] snap-start skeleton">
+                            <div class="aspect-video w-full overflow-hidden rounded-lg skeleton">
+                                <img alt="Quick Trips City Exploration" class="h-full w-full object-cover skeleton-img" src="assets/European.jpg" onload="this.classList.remove('skeleton-img')"/>
+                            </div>
+                            <div class="mt-2 skeleton">
+                                <p class="font-semibold text-slate-900 dark:text-white">
+                                    European Discovery
+                                </p>
+                                <p class="text-sm text-slate-600 dark:text-slate-400">
+                                   From Paris to Rome — explore timeless landmarks and cultures that inspire.
+                                </p>
+                            </div>
+                        </div>
+
+                        
+
+                        <div class="w-64 min-w-[16rem] snap-start skeleton">
+                            <div class="aspect-video w-full overflow-hidden rounded-lg skeleton">
+                                <img alt="Quick Trips City Exploration" class="h-full w-full object-cover skeleton-img" src="assets/study.jpg" onload="this.classList.remove('skeleton-img')"/>
+                            </div>
+                            <div class="mt-2 skeleton">
+                                <p class="font-semibold text-slate-900 dark:text-white">
+                                    Study Abroad Assistance
+                                </p>
+                                <p class="text-sm text-slate-600 dark:text-slate-400">
+                                   Get visa, ticket, and accommodation support for your international studies.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="w-64 min-w-[16rem] snap-start skeleton">
+                            <div class="aspect-video w-full overflow-hidden rounded-lg skeleton">
+                                <img alt="Quick Trips City Exploration" class="h-full w-full object-cover skeleton-img" src="assets/medical.jpg" onload="this.classList.remove('skeleton-img')"/>
+                            </div>
+                            <div class="mt-2 skeleton">
+                                <p class="font-semibold text-slate-900 dark:text-white">
+                                    Medical Tourism
+                                </p>
+                                <p class="text-sm text-slate-600 dark:text-slate-400">
+                                   Travel for top-tier healthcare and recovery experiences abroad with full support.
+                                </p>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </section>
+                <section class="py-4 skeleton">
+                    <h2 class="px-4 text-xl font-bold text-slate-900 dark:text-white skeleton">
+                        Discover Quick Trips' Top Destinations
+                    </h2>
+                    <div class="no-scrollbar mt-3 flex snap-x snap-mandatory scroll-pl-4 space-x-4 overflow-x-auto px-4 skeleton">
+                        <div class="w-40 min-w-[10rem] snap-start skeleton">
+                            <div class="aspect-square w-full overflow-hidden rounded-lg skeleton">
+                                <img alt="Quick Trips Tropical Paradise" class="h-full w-full object-cover skeleton-img" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjaUgvVdyDmMKHPU7hitYUCh5XRtDW-Q4O6ZHcX8HlV75ruZ7QOESIRrjA4F726D-lU3NqjKSDqI6GQKyx-vK_lIylbQAm-uIMLhcAadTLfObrI_AgmtiOYA_0MwU9qhY8BFGQpNtGboxTxR1_cHfuyIPTTrrhuu4Ambzq-b151pMLaH4foYCRVPlWl14n-mSruYtoqHmjkOKyCTW743CTv_PZosJm2BEIBvVDGcYbyNaeL5vqkxrAHd4kHDJqjgNrQo0Dx76vSNI" onload="this.classList.remove('skeleton-img')"/>
+                            </div>
+                            <div class="mt-2 skeleton">
+                                <p class="font-semibold text-slate-900 dark:text-white">
+                                    Tropical Paradise
+                                </p>
+                            </div>
+                        </div>
+                        <div class="w-40 min-w-[10rem] snap-start skeleton">
+                            <div class="aspect-square w-full overflow-hidden rounded-lg skeleton">
+                                <img alt="Quick Trips Historic City" class="h-full w-full object-cover skeleton-img" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCArM7p6geUiwC5gZJo-8K4dvrN7okaZIK_068-9rU3qurOPyZfxvPTyeqnlUJwfZ693bouSaWHu4O0R9qE8k3tXfo7-BmKGjC-72QNVTz-OCDeZcNdMfuOvipljTltstFjeu8wGCfK1uew76nbqiydN5HeDOFj08I-LBcZAF9W1jP4jOYtg2_E6A-ACZph798LDEumHJbs8oV73-O68BkURD9bBgMAb_-d4TgxyJM7uH09iKYsFFcS9kPi8G-wq3Ozs-orQQO5BgM" onload="this.classList.remove('skeleton-img')"/>
+                            </div>
+                            <div class="mt-2 skeleton">
+                                <p class="font-semibold text-slate-900 dark:text-white">
+                                    Historic City
+                                </p>
+                            </div>
+                        </div>
+                        <div class="w-40 min-w-[10rem] snap-start skeleton">
+                            <div class="aspect-square w-full overflow-hidden rounded-lg skeleton">
+                                <img alt="Quick Trips Desert Adventure" class="h-full w-full object-cover skeleton-img" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJY1-ZkHU04oG5QlP5Euymf4MCa8K9G45wfaCHrXIapm1cWklDxylDtBfWI2ceke6NXZM3pPQnoZKJBXn8ki7ylIII_-pkE3HRAQc8g49p2bRWep2EiaPi9Nt6CmSypqZpKM1aozfNwhIywAd_ozMraGvv9HsTtrK8iVKqrMwb6iAp9J4c_jtvuHRtHYmkExrTbZD-0XZET0zmTsunqwmS47UWxDwTlzXdjFiTUg1gUpsAtm7PSCo5wpEX9P73S8fqDnipRn5dVFE" onload="this.classList.remove('skeleton-img')"/>
+                            </div>
+                            <div class="mt-2 skeleton">
+                                <p class="font-semibold text-slate-900 dark:text-white">
+                                    Desert Adventure
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="py-4 skeleton">
+                    <h2 class="px-4 text-xl font-bold text-slate-900 dark:text-white skeleton">
+                        Quick Trips Travel Inspiration
+                    </h2>
+                    <div class="mt-3 grid grid-cols-1 gap-4 px-4 sm:grid-cols-2 skeleton">
+                        <div class="relative aspect-video w-full overflow-hidden rounded-lg skeleton">
+                            <img alt="Quick Trips Snowy Peaks" class="h-full w-full object-cover skeleton-img" src="assets/hotel.jpg" onload="this.classList.remove('skeleton-img')"/>
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                            <p class="absolute bottom-3 left-3 font-semibold text-white">
+                                Snowy Peaks
+                            </p>
+                        </div>
+                        <div class="relative aspect-video w-full overflow-hidden rounded-lg skeleton">
+                            <img alt="Quick Trips Coastal Cliffs" class="h-full w-full object-cover skeleton-img" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCN3krPqnlr_WJKTF57mPnYI4-VA7SsnQDd0K4omjKWtO9JG27tB3FzfyBxLUEERLNiarmbr8kOpPF9pyJ-za2sSDCsIJMK_bPxd37rNdfBcQjxh0aiLXHf22YkC-48jBJUdfX8Z4KWGaW9XT8t1pwZX_vlV3O8ZmXgbhT_NilFjeo8cbRlGvzuKfwlfwSaMfr9DBpfhZIwYHrOeExhWpTQuWZkOijJ3ikO4ogz3fJHqjD0ba_zP7TYseBy8Pa2OP05cw1h-Qi-4Lw" onload="this.classList.remove('skeleton-img')"/>
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                            <p class="absolute bottom-3 left-3 font-semibold text-white">
+                                Coastal Cliffs
+                            </p>
+                        </div>
+                    </div>
+                </section>
+                <section class="py-4 skeleton">
+                    <h2 class="px-4 text-xl font-bold text-slate-900 dark:text-white skeleton">
+                        Quick Trips by the Numbers
+                    </h2>
+                    <div class="mt-3 grid grid-cols-2 gap-4 px-4 skeleton">
+                        <div class="rounded-lg bg-white p-4 dark:bg-slate-800 skeleton">
+                            <p class="text-sm font-medium text-slate-600 dark:text-slate-400">
+                                Destinations
+                            </p>
+                            <p class="mt-1 text-2xl font-bold text-slate-900 dark:text-white">
+                                50+
+                            </p>
+                            <p class="mt-1 text-sm font-medium text-green-500">+10%</p>
+                        </div>
+                        <div class="rounded-lg bg-white p-4 dark:bg-slate-800 skeleton">
+                            <p class="text-sm font-medium text-slate-600 dark:text-slate-400">
+                                Trips
+                            </p>
+                            <p class="mt-1 text-2xl font-bold text-slate-900 dark:text-white">
+                                1000+
+                            </p>
+                            <p class="mt-1 text-sm font-medium text-green-500">+20%</p>
+                        </div>
+                        <div class="col-span-2 rounded-lg bg-white p-4 dark:bg-slate-800 skeleton">
+                            <p class="text-sm font-medium text-slate-600 dark:text-slate-400">
+                                Reviews
+                            </p>
+                            <p class="mt-1 text-2xl font-bold text-slate-900 dark:text-white">
+                                4.8/5
+                            </p>
+                            <p class="mt-1 text-sm font-medium text-green-500">+5%</p>
+                        </div>
+                    </div>
+                </section>
+                <section class="py-8 px-4 md:px-8 lg:px-24 xl:px-48 bg-white dark:bg-slate-800 mt-8 rounded-xl shadow-md">
+                    <h2 class="text-2xl md:text-3xl font-extrabold text-gray-900 dark:text-white mb-6 text-center">Why Choose Us</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <div class="flex flex-col items-center text-center p-6 rounded-lg bg-background-light dark:bg-background-dark shadow">
+                            <!-- Competitive Pricing Icon -->
+                            <svg class="mb-3 text-primary" width="40" height="40" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M12 1v22M17 5H7a4 4 0 0 0 0 8h10a4 4 0 0 1 0 8H7"></path>
+                            </svg>
+                            <h3 class="font-bold text-lg mb-2 text-slate-900 dark:text-white">Competitive Pricing</h3>
+                            <p class="text-slate-600 dark:text-slate-400">We offer unbeatable prices for unforgettable travel experience.</p>
+                        </div>
+                        <div class="flex flex-col items-center text-center p-6 rounded-lg bg-background-light dark:bg-background-dark shadow">
+                            <!-- Worldwide Coverage Icon -->
+                            <svg class="mb-3 text-primary" width="40" height="40" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <path d="M2 12h20M12 2a15.3 15.3 0 0 1 0 20M12 2a15.3 15.3 0 0 0 0 20"></path>
+                            </svg>
+                            <h3 class="font-bold text-lg mb-2 text-slate-900 dark:text-white">Worldwide Coverage</h3>
+                            <p class="text-slate-600 dark:text-slate-400">From Local Getaways to Global Escapes, We've Got You Covered.</p>
+                        </div>
+                        <div class="flex flex-col items-center text-center p-6 rounded-lg bg-background-light dark:bg-background-dark shadow">
+                            <!-- Easy Booking Icon -->
+                            <svg class="mb-3 text-primary" width="40" height="40" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <rect x="3" y="7" width="18" height="13" rx="2"></rect>
+                                <path d="M16 3v4M8 3v4"></path>
+                            </svg>
+                            <h3 class="font-bold text-lg mb-2 text-slate-900 dark:text-white">Easy Booking</h3>
+                            <p class="text-slate-600 dark:text-slate-400">Hassle-Free Booking for Every Destination.</p>
+                        </div>
+                        <div class="flex flex-col items-center text-center p-6 rounded-lg bg-background-light dark:bg-background-dark shadow">
+                            <!-- Guided Tours Icon -->
+                            <svg class="mb-3 text-primary" width="40" height="40" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M12 2l4 7H8l4-7zm0 7v13"></path>
+                            </svg>
+                            <h3 class="font-bold text-lg mb-2 text-slate-900 dark:text-white">Guided Tours</h3>
+                            <p class="text-slate-600 dark:text-slate-400">Explore with Confidence on Our Guided Adventures</p>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+        <footer class="fixed bottom-0 left-0 right-0 border-t border-slate-200 bg-background-light/90 pb-safe-bottom backdrop-blur-sm dark:border-slate-800 dark:bg-background-dark/90 skeleton">
+            <nav class="flex justify-around px-2 pt-2 skeleton">
+                <a class="flex flex-1 flex-col items-center gap-1 py-1 text-primary" href="home.html">
+                    <svg fill="currentColor" height="24" viewBox="0 0 256 256" width="24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M224,115.55V208a16,16,0,0,1-16,16H168a16,16,0,0,1-16-16V168a8,8,0,0,0-8-8H112a8,8,0,0,0-8,8v40a16,16,0,0,1-16,16H48a16,16,0,0,1-16-16V115.55a16,16,0,0,1,5.17-11.78l80-75.48.11-.11a16,16,0,0,1,21.53,0,1.14,1.14,0,0,0,.11.11l80,75.48A16,16,0,0,1,224,115.55Z"></path>
+                    </svg>
+                    <span class="text-xs font-medium">Home</span>
+                </a>
+                <a class="flex flex-1 flex-col items-center gap-1 py-1 text-slate-500 dark:text-slate-400" href="services.html">
+                    <svg fill="currentColor" height="24" viewBox="0 0 256 256" width="24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M216,56H176V48a24,24,0,0,0-24-24H104A24,24,0,0,0,80,48v8H40A16,16,0,0,0,24,72V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V72A16,16,0,0,0,216,56ZM96,48a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96ZM216,72v41.61A184,184,0,0,1,128,136a184.07,184.07,0,0,1-88-22.38V72Zm0,128H40V131.64A200.19,200.19,0,0,0,128,152a200.25,200.25,0,0,0,88-20.37V200ZM104,112a8,8,0,0,1,8-8h32a8,8,0,0,1,0,16H112A8,8,0,0,1,104,112Z"></path>
+                    </svg>
+                    <span class="text-xs font-medium">Services</span>
+                </a>
+                <a class="flex flex-1 flex-col items-center gap-1 py-1 text-slate-500 dark:text-slate-400" href="#">
+                    <svg fill="currentColor" height="24" viewBox="0 0 256 256" width="24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M208,40H48A16,16,0,0,0,32,56v58.78c0,89.61,75.82,119.34,91,124.39a15.53,15.53,0,0,0,10,0c15.2-5.05,91-34.78,91-124.39V56A16,16,0,0,0,208,40Zm0,74.79c0,78.42-66.35,104.62-80,109.18-13.53-4.51-80-30.69-80-109.18V56H208ZM82.34,141.66a8,8,0,0,1,11.32-11.32L112,148.68l50.34-50.34a8,8,0,0,1,11.32,11.32l-56,56a8,8,0,0,1-11.32,0Z"></path>
+                    </svg>
+                    <span class="text-xs font-medium">Trust</span>
+                </a>
+                <a class="flex flex-1 flex-col items-center gap-1 py-1 text-slate-500 dark:text-slate-400" href="contact.html">
+                    <svg fill="currentColor" height="24" viewBox="0 0 256 256" width="24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M222.37,158.46l-47.11-21.11-.13-.06a16,16,0,0,0-15.17,1.4,8.12,8.12,0,0,0-.75.56L134.87,160c-15.42-7.49-31.34-23.29-38.83-38.51l20.78-24.71c.2-.25.39-.50.57-.77a16,16,0,0,0,1.32-15.06l0-.12L97.54,33.64a16,16,0,0,0-16.62-9.52A56.26,56.26,0,0,0,32,80c0,79.40,64.60,144,144,144a56.26,56.26,0,0,0,55.88-48.92A16,16,0,0,0,222.37,158.46ZM176,208A128.14,128.14,0,0,1,48,80,40.20,40.20,0,0,1,82.87,40a.61.61,0,0,0,0,.12l21,47L83.20,111.86a6.13,6.13,0,0,0-.57.77,16,16,0,0,0-1,15.70c9.06,18.53,27.73,37.06,46.46,46.11a16,16,0,0,0,15.75-1.14,8.44,8.44,0,0,0,.74-.56L168.89,152l47,21.05h0s.08,0,.11,0A40.21,40.21,0,0,1,176,208Z"></path>
+                    </svg>
+                    <span class="text-xs font-medium">Contact</span>
+                </a>
+            </nav>
+        </footer>
+    </div>
+    <script>
+        // Remove skeleton from body after all images loaded
+        window.addEventListener('load', function() {
+            document.querySelectorAll('.skeleton').forEach(el => el.classList.remove('skeleton'));
+        });
+    </script>
+</body>
+</html>

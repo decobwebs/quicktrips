@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Quick Trips Services</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#068cf9",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#0f1a23",
+                        "content-light": "#111518",
+                        "content-dark": "#e3e8ed",
+                        "subtle-light": "#5f788c",
+                        "subtle-dark": "#a0b3c4",
+                        "border-light": "#dbe1e6",
+                        "border-dark": "#2a3b4c"
+                    },
+                    fontFamily: {
+                        display: ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.75rem",
+                        lg: "1rem",
+                        xl: "1.25rem",
+                        full: "9999px"
+                    },
+                },
+            },
+        };
+    </script>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+        .icon-container {
+            width: 3rem;
+            height: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 9999px;
+            background-color: #068cf920;
+            position: relative;
+        }
+        .icon-container svg {
+            width: 1.5rem;
+            height: 1.5rem;
+            color: #068cf9;
+        }
+        .service-card {
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.2s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .service-card:active {
+            transform: translateY(-1px) scale(0.98);
+            transition: transform 0.1s ease-in-out;
+        }
+        .cloud {
+            position: absolute;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 48'%3E%3Cpath fill='%23e0f2fe' d='M92,32c-3.31,0-6-2.69-6-6s2.69-6,6-6c0.14,0,0.28,0.01,0.41,0.02C89.5,13.13,82.4,8,74,8c-9.94,0-18,8.06-18,18c0,0.1,0,0.19,0.01,0.29C54.17,25.43,52.17,25,50,25c-5.52,0-10,4.48-10,10c0,0.28,0.02,0.56,0.05,0.83C35.91,33.56,31.25,32,26,32c-6.63,0-12,5.37-12,12h90c0-6.63-5.37-12-12-12Z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-size: contain;
+            opacity: 0.5;
+            animation: drift linear infinite;
+            z-index: 0;
+        }
+        .dark .cloud {
+            opacity: 0.15;
+        }
+        .cloud-1 {
+            width: 150px;
+            height: 75px;
+            top: 10%;
+            animation-duration: 25s;
+        }
+        .cloud-2 {
+            width: 120px;
+            height: 60px;
+            top: 60%;
+            animation-duration: 35s;
+            animation-delay: -5s;
+        }
+        .cloud-3 {
+            width: 180px;
+            height: 90px;
+            top: 30%;
+            animation-duration: 45s;
+            animation-delay: -15s;
+        }
+        @keyframes drift {
+            from { transform: translateX(-150px); }
+            to { transform: translateX(384px); }
+        }
+        .skeleton {
+            background: linear-gradient(90deg, #e2e8f0 25%, #f5f7f8 50%, #e2e8f0 75%);
+            background-size: 200% 100%;
+            animation: skeleton-loading 1.5s infinite linear;
+        }
+        @keyframes skeleton-loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+        .skeleton-img {
+            visibility: hidden;
+        }
+        .skeleton-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .book-now-btn {
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            min-width: 120px;
+        }
+        @media (min-width: 640px) {
+            .book-now-btn {
+                min-width: 140px;
+            }
+        }
+        .book-now-btn:hover {
+            background-color: #068cf9 !important;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+    </style>
+</head>
+<body class="bg-white dark:bg-background-dark font-display text-content-light dark:text-content-dark">
+    <div class="max-w-7xl mx-auto pb-20">
+        <header class="p-4 sm:p-6 bg-white dark:bg-background-dark sticky top-0 z-10 border-b border-border-light dark:border-border-dark skeleton">
+            <div class="flex items-center justify-between">
+                <div class="w-6"></div>
+                <h1 class="text-lg sm:text-xl lg:text-2xl font-bold text-center text-content-light dark:text-content-dark">Our Services</h1>
+                <div class="w-6"></div>
+            </div>
+        </header>
+        <main class="p-4 sm:p-6 lg:p-8 bg-white dark:bg-background-dark">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+                <a class="service-card bg-white dark:bg-background-dark rounded-lg p-6 flex flex-col gap-4 border border-border-light dark:border-border-dark skeleton" href="#">
+                    <div class="cloud cloud-1"></div>
+                    <div class="cloud cloud-2"></div>
+                    <div class="cloud cloud-3"></div>
+                    <div class="icon-container relative z-10">
+                        <div class="skeleton h-6 w-6 rounded-full skeleton-overlay"></div>
+                        <svg fill="currentColor" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" class="skeleton-img">
+                            <path d="M235.58,128.84,160,91.06V48a32,32,0,0,0-64,0V91.06L20.42,128.84A8,8,0,0,0,16,136v32a8,8,0,0,0,9.57,7.84L96,161.76v18.93L82.34,194.34A8,8,0,0,0,80,200v32a8,8,0,0,0,11,7.43l37-14.81,37,14.81A8,8,0,0,0,176,232V200a8,8,0,0,0-2.34-5.66L160,180.69V161.76l70.43,14.08A8,8,0,0,0,240,168V136A8,8,0,0,0,235.58,128.84ZM224,158.24l-70.43-14.08A8,8,0,0,0,144,152v32a8,8,0,0,0,2.34,5.66L160,203.31v16.87l-29-11.61a8,8,0,0,0-5.94,0L96,220.18V203.31l13.66-13.65A8,8,0,0,0,112,184V152a8,8,0,0,0-9.57-7.84L32,158.24v-17.30l75.58-37.78A8,8,0,0,0,112,96V48a16,16,0,0,1,32,0V96a8,8,0,0,0,4.42,7.16L224,140.94Z"></path>
+                        </svg>
+                    </div>
+                    <div class="flex flex-col gap-1 relative z-10">
+                        <div class="skeleton h-5 w-48 rounded mb-2"></div>
+                        <div class="skeleton h-4 w-full rounded"></div>
+                        <h2 class="text-base sm:text-lg lg:text-xl font-bold text-content-light dark:text-content-dark">Local & International Ticketing</h2>
+                        <p class="text-sm sm:text-base text-subtle-light dark:text-subtle-dark">Seamless booking for your flights, whether domestic or across the globe.</p>
+                        
+                    </div>
+                    
+                    
+                </a>
+                <a class="service-card bg-white dark:bg-background-dark rounded-lg p-6 flex flex-col gap-4 border border-border-light dark:border-border-dark skeleton" href="#">
+                    <div class="cloud cloud-1"></div>
+                    <div class="cloud cloud-2"></div>
+                    <div class="cloud cloud-3"></div>
+                    <div class="icon-container relative z-10">
+                        <div class="skeleton h-6 w-6 rounded-full skeleton-overlay"></div>
+                        <svg fill="currentColor" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" class="skeleton-img">
+                            <path d="M144,48H88a16,16,0,0,0-16,16V208a16,16,0,0,0,16,16h72a16,16,0,0,0,16-16V96Zm0,160H112V184a8,8,0,0,0-8-8H88a8,8,0,0,0,0,16h8v8a8,8,0,0,0,16,0v-8h16Zm32-80v64H160V128Zm0-16H160V96h16Zm-32-16H96V64h48Zm64-48V208a32,32,0,0,1-32,32H88a32,32,0,0,1-32-32V64A32,32,0,0,1,88,32h72L208,80Z"></path>
+                        </svg>
+                    </div>
+                    <div class="flex flex-col gap-1 relative z-10">
+                        <div class="skeleton h-5 w-48 rounded mb-2"></div>
+                        <div class="skeleton h-4 w-full rounded"></div>
+                        <h2 class="text-base sm:text-lg lg:text-xl font-bold text-content-light dark:text-content-dark">Visa Application Assistance</h2>
+                        <p class="text-sm sm:text-base text-subtle-light dark:text-subtle-dark">Expert guidance to navigate the complexities of visa applications.</p>
+                        
+                    </div>
+                    
+                </a>
+                <a class="service-card bg-white dark:bg-background-dark rounded-lg p-6 flex flex-col gap-4 border border-border-light dark:border-border-dark skeleton" href="#">
+                    <div class="cloud cloud-1"></div>
+                    <div class="cloud cloud-2"></div>
+                    <div class="cloud cloud-3"></div>
+                    <div class="icon-container relative z-10">
+                        <div class="skeleton h-6 w-6 rounded-full skeleton-overlay"></div>
+                        <svg fill="currentColor" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" class="skeleton-img">
+                            <path d="M208,72H24V48A8,8,0,0,0,8,48V208a8,8,0,0,0,16,0V176H232v32a8,8,0,0,0,16,0V112A40,40,0,0,0,208,72ZM24,88H96v72H24Zm88,72V88h96a24,24,0,0,1,24,24v48Z"></path>
+                        </svg>
+                    </div>
+                    <div class="flex flex-col gap-1 relative z-10">
+                        <div class="skeleton h-5 w-48 rounded mb-2"></div>
+                        <div class="skeleton h-4 w-full rounded"></div>
+                        <h2 class="text-base sm:text-lg lg:text-xl font-bold text-content-light dark:text-content-dark">Hotel Reservations</h2>
+                        <p class="text-sm sm:text-base text-subtle-light dark:text-subtle-dark">Book your stay in top-rated hotels at competitive prices.</p>
+                        
+                    </div>
+                    
+                </a>
+                <a class="service-card bg-white dark:bg-background-dark rounded-lg p-6 flex flex-col gap-4 border border-border-light dark:border-border-dark skeleton" href="#">
+                    <div class="cloud cloud-1"></div>
+                    <div class="cloud cloud-2"></div>
+                    <div class="cloud cloud-3"></div>
+                    <div class="icon-container relative z-10">
+                        <div class="skeleton h-6 w-6 rounded-full skeleton-overlay"></div>
+                        <svg fill="currentColor" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" class="skeleton-img">
+                            <path d="M215.6,83.33,184,51.69,144.31,12,111.69,12,72,51.69,40.4,83.33A15.9,15.9,0,0,0,32,96V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V96A15.9,15.9,0,0,0,215.6,83.33ZM128,24l22.1,22.1L128,68.2,105.9,46.1ZM136,88a8,8,0,0,1-16,0V40h16ZM83.71,64,120,27.71V88a8,8,0,0,0,16,0V27.71L172.29,64Zm124.29,144H48V96h8v8a8,8,0,0,0,16,0V96H184v8a8,8,0,0,0,16,0V96h8Z"></path>
+                        </svg>
+                    </div>
+                    <div class="flex flex-col gap-1 relative z-10">
+                        <div class="skeleton h-5 w-48 rounded mb-2"></div>
+                        <div class="skeleton h-4 w-full rounded"></div>
+                        <h2 class="text-base sm:text-lg lg:text-xl font-bold text-content-light dark:text-content-dark">Bespoke Vacation Packages</h2>
+                        <p class="text-sm sm:text-base text-subtle-light dark:text-subtle-dark">Tailor-made itineraries crafted to match your unique travel style.</p>
+                        
+                    </div>
+                    
+                </a>
+                <a class="service-card bg-white dark:bg-background-dark rounded-lg p-6 flex flex-col gap-4 border border-border-light dark:border-border-dark skeleton" href="#">
+                    <div class="cloud cloud-1"></div>
+                    <div class="cloud cloud-2"></div>
+                    <div class="cloud cloud-3"></div>
+                    <div class="icon-container relative z-10">
+                        <div class="skeleton h-6 w-6 rounded-full skeleton-overlay"></div>
+                        <svg fill="currentColor" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" class="skeleton-img">
+                            <path d="M192,80a16,16,0,0,1-16,16H80a16,16,0,0,1-16-16V40H32A16,16,0,0,0,16,56V200a16,16,0,0,0,16,16H224a16,16,0,0,0,16-16V56a16,16,0,0,0-16-16H208V80Zm48,120H16V56H56V80a24,24,0,0,0,24,24H176a24,24,0,0,0,24-24V56h40ZM88,144a8,8,0,0,1,8-8h64a8,8,0,0,1,0,16H96A8,8,0,0,1,88,144Zm8,32h64a8,8,0,0,0,0-16H96a8,8,0,0,0,0,16Z"></path>
+                        </svg>
+                    </div>
+                    <div class="flex flex-col gap-1 relative z-10">
+                        <div class="skeleton h-5 w-48 rounded mb-2"></div>
+                        <div class="skeleton h-4 w-full rounded"></div>
+                        <h2 class="text-base sm:text-lg lg:text-xl font-bold text-content-light dark:text-content-dark">Corporate & Group Travel</h2>
+                        <p class="text-sm sm:text-base text-subtle-light dark:text-subtle-dark">Specialized travel solutions for business meetings and group tours.</p>
+                        
+                    </div>
+                    
+                </a>
+                <a class="service-card bg-white dark:bg-background-dark rounded-lg p-6 flex flex-col gap-4 border border-border-light dark:border-border-dark skeleton" href="#">
+                    <div class="cloud cloud-1"></div>
+                    <div class="cloud cloud-2"></div>
+                    <div class="cloud cloud-3"></div>
+                    <div class="icon-container relative z-10">
+                        <div class="skeleton h-6 w-6 rounded-full skeleton-overlay"></div>
+                        <svg fill="currentColor" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" class="skeleton-img">
+                            <path d="M240,112H229.2L201.42,49.5A16,16,0,0,0,186.8,40H69.2a16,16,0,0,0-14.62,9.5L26.8,112H16a8,8,0,0,0,0,16h8v80a16,16,0,0,0,16,16H64a16,16,0,0,0,16-16V192h96v16a16,16,0,0,0,16,16h24a16,16,0,0,0,16-16V128h8a8,8,0,0,0,0-16ZM69.2,56H186.8l24.89,56H44.31ZM64,208H40V192H64Zm128,0V192h24v16Zm24-32H40V128H216ZM56,152a8,8,0,0,1,8-8H80a8,8,0,0,1,0,16H64A8,8,0,0,1,56,152Zm112,0a8,8,0,0,1,8-8h16a8,8,0,0,1,0,16H176A8,8,0,0,1,168,152Z"></path>
+                        </svg>
+                    </div>
+                    <div class="flex flex-col gap-1 relative z-10">
+                        <div class="skeleton h-5 w-48 rounded mb-2"></div>
+                        <div class="skeleton h-4 w-full rounded"></div>
+                        <h2 class="text-base sm:text-lg lg:text-xl font-bold text-content-light dark:text-content-dark">On-Ground Logistics Support</h2>
+                        <p class="text-sm sm:text-base text-subtle-light dark:text-subtle-dark">Reliable transportation and logistics to ensure a smooth trip.</p>
+                    </div>
+                    
+                </a>
+            </div>
+        </main>
+        <footer class="fixed bottom-0 left-0 right-0 bg-white dark:bg-background-dark border-t border-border-light dark:border-dark z-20 pb-safe-bottom">
+            <nav class="flex justify-around items-center h-16 gap-2 sm:gap-4 lg:gap-6">
+                <a class="flex flex-col items-center justify-center gap-1 text-primary" href="home.html">
+                    <div class="flex items-center justify-center size-6">
+                        <svg fill="currentColor" height="24" viewBox="0 0 256 256" width="24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M224,115.55V208a16,16,0,0,1-16,16H168a16,16,0,0,1-16-16V168a8,8,0,0,0-8-8H112a8,8,0,0,0-8,8v40a16,16,0,0,1-16,16H48a16,16,0,0,1-16-16V115.55a16,16,0,0,1,5.17-11.78l80-75.48.11-.11a16,16,0,0,1,21.53,0,1.14,1.14,0,0,0,.11.11l80,75.48A16,16,0,0,1,224,115.55Z"></path>
+                        </svg>
+                    </div>
+                    <span class="text-xs font-medium">Home</span>
+                </a>
+                <a class="flex flex-col items-center justify-center gap-1 text-subtle-light dark:text-subtle-dark" href="services.html">
+                    <div class="flex items-center justify-center size-6 rounded-full bg-primary/20">
+                        <svg fill="currentColor" height="24" viewBox="0 0 256 256" width="24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M216,56H176V48a24,24,0,0,0-24-24H104A24,24,0,0,0,80,48v8H40A16,16,0,0,0,24,72V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V72A16,16,0,0,0,216,56ZM96,48a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96ZM216,72v41.61A184,184,0,0,1,128,136a184.07,184.07,0,0,1-88-22.38V72Zm0,128H40V131.64A200.19,200.19,0,0,0,128,152a200.25,200.25,0,0,0,88-20.37V200ZM104,112a8,8,0,0,1,8-8h32a8,8,0,0,1,0,16H112A8,8,0,0,1,104,112Z"></path>
+                        </svg>
+                    </div>
+                    <span class="text-xs font-bold">Services</span>
+                </a>
+                <a class="flex flex-col items-center justify-center gap-1 text-subtle-light dark:text-subtle-dark" href="#">
+                    <div class="flex items-center justify-center size-6">
+                        <svg fill="currentColor" height="24" viewBox="0 0 256 256" width="24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M208,40H48A16,16,0,0,0,32,56v58.78c0,89.61,75.82,119.34,91,124.39a15.53,15.53,0,0,0,10,0c15.2-5.05,91-34.78,91-124.39V56A16,16,0,0,0,208,40Zm0,74.79c0,78.42-66.35,104.62-80,109.18-13.53-4.51-80-30.69-80-109.18V56H208ZM82.34,141.66a8,8,0,0,1,11.32-11.32L112,148.68l50.34-50.34a8,8,0,0,1,11.32,11.32l-56,56a8,8,0,0,1-11.32,0Z"></path>
+                        </svg>
+                    </div>
+                    <span class="text-xs font-medium">Trust</span>
+                </a>
+                <a class="flex flex-col items-center justify-center gap-1 text-subtle-light dark:text-subtle-dark" href="contact.html">
+                    <div class="flex items-center justify-center size-6">
+                        <svg fill="currentColor" height="24" viewBox="0 0 256 256" width="24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M222.37,158.46l-47.11-21.11-.13-.06a16,16,0,0,0-15.17,1.4,8.12,8.12,0,0,0-.75.56L134.87,160c-15.42-7.49-31.34-23.29-38.83-38.51l20.78-24.71c.2-.25.39-.50.57-.77a16,16,0,0,0,1.32-15.06l0-.12L97.54,33.64a16,16,0,0,0-16.62-9.52A56.26,56.26,0,0,0,32,80c0,79.40,64.60,144,144,144a56.26,56.26,0,0,0,55.88-48.92A16,16,0,0,0,222.37,158.46ZM176,208A128.14,128.14,0,0,1,48,80,40.20,40.20,0,0,1,82.87,40a.61.61,0,0,0,0,.12l21,47L83.20,111.86a6.13,6.13,0,0,0-.57.77,16,16,0,0,0-1,15.70c9.06,18.53,27.73,37.06,46.46,46.11a16,16,0,0,0,15.75-1.14,8.44,8.44,0,0,0,.74-.56L168.89,152l47,21.05h0s.08,0,.11,0A40.21,40.21,0,0,1,176,208Z"></path>
+                        </svg>
+                    </div>
+                    <span class="text-xs font-medium">Contact</span>
+                </a>
+            </nav>
+        </footer>
+    </div>
+    <script>
+        window.addEventListener('load', function() {
+            document.querySelectorAll('.skeleton').forEach(el => el.classList.remove('skeleton'));
+            document.querySelectorAll('.skeleton-img').forEach(img => img.classList.remove('skeleton-img'));
+        });
+    </script>
+</body>
+</html>

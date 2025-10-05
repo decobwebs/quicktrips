@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Top 10 Destinations for 2025 | Quick Trips</title>
+  <!-- TailwindCSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome CDN for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- AOS.js CDN for animations -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Custom JS -->
+  <script src="js/main.js" defer></script>
+</head>
+<body class="bg-brand-light text-brand-gray m-0 p-0 overflow-x-hidden">
+  <!-- Navbar -->
+  <header class="sticky top-0 bg-brand-navy text-brand-white z-20 shadow-md">
+    <nav class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <img src="assets/logo.png" alt="Quick Trips Logo" class="h-8 md:h-10">
+      <ul class="hidden md:flex space-x-6">
+        <li><a href="index.html#home" class="hover:text-brand-sky transition-colors">Home</a></li>
+        <li><a href="index.html#services" class="hover:text-brand-sky transition-colors">Services</a></li>
+        <li><a href="index.html#testimonials" class="hover:text-brand-sky transition-colors">Testimonials</a></li>
+        <li><a href="index.html#faqs" class="hover:text-brand-sky transition-colors">FAQs</a></li>
+        <li><a href="index.html#blog" class="hover:text-brand-sky transition-colors">Blog</a></li>
+        <li><a href="index.html#contact" class="hover:text-brand-sky transition-colors">Contact</a></li>
+      </ul>
+      <button id="menu-toggle" class="md:hidden text-3xl focus:outline-none" aria-label="Toggle menu">☰</button>
+    </nav>
+    <ul id="mobile-menu" class="hidden md:hidden bg-brand-navy px-4 pb-4">
+      <li><a href="index.html#home" class="block py-2 hover:text-brand-sky transition-colors">Home</a></li>
+      <li><a href="index.html#services" class="block py-2 hover:text-brand-sky transition-colors">Services</a></li>
+      <li><a href="index.html#testimonials" class="block py-2 hover:text-brand-sky transition-colors">Testimonials</a></li>
+      <li><a href="index.html#faqs" class="block py-2 hover:text-brand-sky transition-colors">FAQs</a></li>
+      <li><a href="index.html#blog" class="block py-2 hover:text-brand-sky transition-colors">Blog</a></li>
+      <li><a href="index.html#contact" class="block py-2 hover:text-brand-sky transition-colors">Contact</a></li>
+    </ul>
+  </header>
+
+  <!-- Blog Post Content -->
+  <section class="py-16 bg-brand-white">
+    <div class="container mx-auto px-4">
+      <div class="relative mb-8" data-aos="fade-up">
+        <img src="assets/blog-1.jpg" alt="Top 10 travel destinations for 2025" class="w-full h-96 object-cover rounded-lg" loading="eager" onerror="this.classList.add('hidden'); this.nextElementSibling.classList.remove('hidden'); console.error('Failed to load blog-1.jpg'); this.src='assets/fallback.jpg';">
+        <div class="image-error hidden absolute inset-0 flex items-center justify-center bg-brand-gray/80 text-brand-white text-center">Failed to load image</div>
+        <div class="shimmer absolute inset-0"></div>
+      </div>
+      <div class="max-w-3xl mx-auto blog-post-content">
+        <h1 class="text-3xl md:text-4xl font-bold mb-4 text-brand-navy" data-aos="fade-up">Top 10 Destinations for 2025</h1>
+        <div class="text-brand-gray mb-6" data-aos="fade-up" data-aos-delay="100">
+          <p>By Quick Trips Team | October 1, 2025</p>
+        </div>
+        <div class="prose text-brand-gray" data-aos="fade-up" data-aos-delay="200">
+          <p>Planning your next adventure? 2025 is set to be an exciting year for travel, with destinations that cater to every type of traveler. From vibrant cityscapes to tranquil beaches, here are our top 10 picks for must-visit places.</p>
+          <h2>1. Tokyo, Japan</h2>
+          <p>Tokyo blends futuristic technology with rich tradition. Visit Shibuya Crossing, explore ancient temples, and indulge in world-class sushi.</p>
+          <h2>2. Santorini, Greece</h2>
+          <p>Known for its stunning caldera views and whitewashed buildings, Santorini is perfect for romantic getaways and sunset lovers.</p>
+          <h2>3. Cape Town, South Africa</h2>
+          <p>With Table Mountain, vibrant markets, and nearby winelands, Cape Town offers adventure and culture in equal measure.</p>
+          <p>Stay tuned for the full list in our detailed guide! Contact Quick Trips to plan your visit to these incredible destinations.</p>
+          <a href="index.html#inquiry" class="text-brand-sky hover:underline">Plan Your Trip Now</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="contact" class="bg-brand-navy text-brand-white py-12">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div>
+          <h3 class="text-xl font-semibold mb-4">Quick Trips</h3>
+          <p>Your trusted partner for seamless travel experiences worldwide.</p>
+        </div>
+        <div>
+          <h3 class="text-xl font-semibold mb-4">Contact Us</h3>
+          <p>Email: <a href="mailto:info@quicktrips.com" class="hover:text-brand-sky">info@quicktrips.com</a></p>
+          <p>Phone: <a href="tel:+1234567890" class="hover:text-brand-sky">+123-456-7890</a></p>
+          <p>WhatsApp: <a href="https://wa.me/8155114430" target="_blank" class="hover:text-brand-sky">Chat with us</a></p>
+        </div>
+        <div>
+          <h3 class="text-xl font-semibold mb-4">Follow Us</h3>
+          <div class="flex space-x-4">
+            <a href="https://facebook.com" target="_blank" class="hover:text-brand-sky"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com" target="_blank" class="hover:text-brand-sky"><i class="fab fa-twitter"></i></a>
+            <a href="https://instagram.com" target="_blank" class="hover:text-brand-sky"><i class="fab fa-instagram"></i></a>
+          </div>
+          <h3 class="text-xl font-semibold mt-6 mb-4">Quick Links</h3>
+          <ul class="space-y-2">
+            <li><a href="#home" class="hover:text-brand-sky">Home</a></li>
+            <li><a href="#services" class="hover:text-brand-sky">Services</a></li>
+            <li><a href="#testimonials" class="hover:text-brand-sky">Testimonials</a></li>
+            <li><a href="#faqs" class="hover:text-brand-sky">FAQs</a></li>
+            <li><a href="#blog" class="hover:text-brand-sky">Blog</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-8 text-center">
+        <p>&copy; 2025 Quick Trips. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

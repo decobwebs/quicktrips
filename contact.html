@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Quick Trips Contact</title>
+    <link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
+    <link as="style" href="https://fonts.googleapis.com/css2?display=swap&family=Plus+Jakarta+Sans:wght@400;500;700;800" onload="this.rel='stylesheet'" rel="stylesheet"/>
+    <link href="data:image/x-icon;base64," rel="icon" type="image/x-icon"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#068cf9",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#0f1a23",
+                        "content-light": "#111518",
+                        "content-dark": "#e3e8ed",
+                        "subtle-light": "#5f788c",
+                        "subtle-dark": "#a0b3c4",
+                        "border-light": "#dbe1e6",
+                        "border-dark": "#2a3b4c"
+                    },
+                    fontFamily: {
+                        display: ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: { 
+                        DEFAULT: "0.75rem", 
+                        lg: "1rem", 
+                        xl: "1.25rem", 
+                        full: "9999px" 
+                    },
+                },
+            },
+        };
+    </script>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+        .skeleton {
+            background: linear-gradient(90deg, #e2e8f0 25%, #f5f7f8 50%, #e2e8f0 75%);
+            background-size: 200% 100%;
+            animation: skeleton-loading 1.5s infinite linear;
+        }
+        @keyframes skeleton-loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+        .skeleton-img {
+            visibility: hidden;
+        }
+        .contact-card {
+            transition: transform 0.2s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .contact-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .contact-card:active {
+            transform: translateY(-1px) scale(0.98);
+            transition: transform 0.1s ease-in-out;
+        }
+        .social-icon, .icon-container {
+            transition: background-color 0.3s ease, color 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .social-icon:hover, .icon-container:hover {
+            background-color: #068cf9 !important;
+            color: white !important;
+        }
+        .skeleton-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-content-light dark:text-content-dark">
+    <div class="relative flex min-h-screen w-full flex-col justify-between overflow-x-hidden">
+        <div class="flex-grow">
+            <header class="flex items-center bg-background-light dark:bg-background-dark p-4 sm:p-6 pb-2 justify-center sticky top-0 z-10 border-b border-border-light dark:border-border-dark skeleton">
+                <h2 class="text-lg font-bold text-center">Contact Us</h2>
+            </header>
+            <main class="pb-24">
+                <div class="relative min-h-[320px] flex flex-col items-center justify-center p-4 sm:p-6 text-center bg-cover bg-center skeleton" style='background-image: linear-gradient(rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.5) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuBUVCGbgTbQ6TmGPcXiYwyb4LP_LeU-eU-ORKGEYFle2GoDQsqQ65KURN3vdhDSOGQls9zmd9o8g-z3w4tsPsc5HDuO3rIiMM_UKIH1uy1YAlRYy71WnrxBgawAJ-UX3DKRUZnReHthOoVVBtNIIXPo1yYFnvYXNzgut8IRca8sSOXN-yd65lqlybNWsoueJljbQYw4qjW_90nCA6fMtBCh47Nv8PuuNNnCnaOVpnwOMdvafUKX8qtan6WPD_m9hHNiUSoW--Jnc1s");'>
+                    <div class="skeleton h-10 w-48 rounded mb-4"></div>
+                    <div class="skeleton h-6 w-80 rounded"></div>
+                    <h1 class="text-3xl sm:text-4xl font-black text-white">Quick Trips</h1>
+                    <p class="mt-2 max-w-md text-sm sm:text-base text-white/90">We're here to help you plan your next adventure. Contact us with any questions or requests.</p>
+                </div>
+                <div class="p-4 sm:p-6 space-y-6 max-w-4xl mx-auto">
+                    <section>
+                        <h3 class="text-xl font-bold mb-4 px-2 skeleton">Contact Information</h3>
+                        <div class="space-y-4">
+                            <a href="mailto:quicktripstravelng@yahoo.com" class="contact-card flex items-center gap-4 bg-white dark:bg-background-dark p-4 rounded-xl border border-border-light dark:border-border-dark skeleton">
+                                <div class="icon-container rounded-full bg-primary/10 text-primary size-12">
+                                    <div class="skeleton h-6 w-6 rounded-full skeleton-overlay"></div>
+                                    <svg fill="currentColor" height="24" viewBox="0 0 256 256" width="24" xmlns="http://www.w3.org/2000/svg" class="skeleton-img">
+                                        <path d="M224,48H32a8,8,0,0,0-8,8V192a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A8,8,0,0,0,224,48Zm-96,85.15L52.57,64H203.43ZM98.71,128,40,181.81V74.19Zm11.84,10.85,12,11.05a8,8,0,0,0,10.82,0l12-11.05,58,53.15H52.57ZM157.29,128,216,74.18V181.82Z"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <div class="skeleton h-5 w-24 rounded mb-2"></div>
+                                    <div class="skeleton h-4 w-48 rounded"></div>
+                                    <p class="font-semibold text-content-light dark:text-content-dark">Email</p>
+                                    <p class="text-sm text-subtle-light dark:text-subtle-dark">quicktripstravelng@yahoo.com</p>
+                                </div>
+                            </a>
+                            <a href="tel:+15551234567" class="contact-card flex items-center gap-4 bg-white dark:bg-background-dark p-4 rounded-xl border border-border-light dark:border-border-dark skeleton">
+                                <div class="icon-container rounded-full bg-primary/10 text-primary size-12">
+                                    <div class="skeleton h-6 w-6 rounded-full skeleton-overlay"></div>
+                                    <svg fill="currentColor" height="24" viewBox="0 0 256 256" width="24" xmlns="http://www.w3.org/2000/svg" class="skeleton-img">
+                                        <path d="M222.37,158.46l-47.11-21.11-.13-.06a16,16,0,0,0-15.17,1.4,8.12,8.12,0,0,0-.75.56L134.87,160c-15.42-7.49-31.34-23.29-38.83-38.51l20.78-24.71c.2-.25.39-.5.57-.77a16,16,0,0,0,1.32-15.06l0-.12L97.54,33.64a16,16,0,0,0-16.62-9.52A56.26,56.26,0,0,0,32,80c0,79.4,64.6,144,144,144a56.26,56.26,0,0,0,55.88-48.92A16,16,0,0,0,222.37,158.46ZM176,208A128.14,128.14,0,0,1,48,80,40.2,40.2,0,0,1,82.87,40a.61.61,0,0,0,0,.12l21,47L83.2,111.86a6.13,6.13,0,0,0-.57.77,16,16,0,0,0-1,15.7c9.06,18.53,27.73,37.06,46.46,46.11a16,16,0,0,0,15.75-1.14,8.44,8.44,0,0,0,.74-.56L168.89,152l47,21.05h0s.08,0,.11,0A40.21,40.21,0,0,1,176,208Z"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <div class="skeleton h-5 w-24 rounded mb-2"></div>
+                                    <div class="skeleton h-4 w-48 rounded"></div>
+                                    <p class="font-semibold text-content-light dark:text-content-dark">Phone</p>
+                                    <p class="text-sm text-subtle-light dark:text-subtle-dark">+1 (555) 123-4567</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="mt-6">
+                            <a href="https://wa.me/15551234567" class="flex w-full items-center justify-center gap-2 rounded-lg bg-primary h-12 px-5 text-white font-bold tracking-wide transition-colors hover:bg-primary/90 skeleton">
+                                <div class="relative flex items-center justify-center size-5">
+                                    <div class="skeleton h-5 w-5 rounded-full skeleton-overlay"></div>
+                                    <svg fill="currentColor" height="20" viewBox="0 0 256 256" width="20" xmlns="http://www.w3.org/2000/svg" class="skeleton-img">
+                                        <path d="M187.58,144.84l-32-16a8,8,0,0,0-8,.5l-14.69,9.8a40.55,40.55,0,0,1-16-16l9.8-14.69a8,8,0,0,0,.5-8l-16-32A8,8,0,0,0,104,64a40,40,0,0,0-40,40,88.1,88.1,0,0,0,88,88,40,40,0,0,0,40-40A8,8,0,0,0,187.58,144.84ZM152,176a72.08,72.08,0,0,1-72-72A24,24,0,0,1,99.29,80.46l11.48,23L101,118a8,8,0,0,0-.73,7.51,56.47,56.47,0,0,0,30.15,30.15A8,8,0,0,0,138,155l14.61-9.74,23,11.48A24,24,0,0,1,152,176ZM128,24A104,104,0,0,0,36.18,176.88L24.83,210.93a16,16,0,0,0,20.24,20.24l34.05-11.35A104,104,0,1,0,128,24Zm0,192a87.87,87.87,0,0,1-44.06-11.81,8,8,0,0,0-6.54-.67L40,216,52.47,178.6a8,8,0,0,0-.66-6.54A88,88,0,1,1,128,216Z"></path>
+                                    </svg>
+                                </div>
+                                <span class="flex items-center">Chat with us on WhatsApp</span>
+                            </a>
+                        </div>
+                    </section>
+                    <section>
+                        <h3 class="text-xl font-bold mb-4 px-2 skeleton">Follow Us</h3>
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
+                            <a href="#" class="group">
+                                <div class="social-icon rounded-full bg-primary/10 text-primary size-14 mx-auto">
+                                    <div class="skeleton h-6 w-6 rounded-full skeleton-overlay"></div>
+                                    <svg fill="currentColor" height="24" viewBox="0 0 256 256" width="24" xmlns="http://www.w3.org/2000/svg" class="skeleton-img">
+                                        <path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm8,191.63V152h24a8,8,0,0,0,0-16H136V112a16,16,0,0,1,16-16h16a8,8,0,0,0,0-16H152a32,32,0,0,0-32,32v24H96a8,8,0,0,0,0,16h24v63.63a88,88,0,1,1,16,0Z"></path>
+                                    </svg>
+                                </div>
+                                <p class="mt-2 text-sm font-medium text-subtle-light dark:text-subtle-dark">Facebook</p>
+                            </a>
+                            <a href="#" class="group">
+                                <div class="social-icon rounded-full bg-primary/10 text-primary size-14 mx-auto">
+                                    <div class="skeleton h-6 w-6 rounded-full skeleton-overlay"></div>
+                                    <svg fill="currentColor" height="24" viewBox="0 0 256 256" width="24" xmlns="http://www.w3.org/2000/svg" class="skeleton-img">
+                                        <path d="M128,80a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,80a32,32,0,1,1,32-32A32,32,0,0,1,128,160ZM176,24H80A56.06,56.06,0,0,0,24,80v96a56.06,56.06,0,0,0,56,56h96a56.06,56.06,0,0,0,56-56V80A56.06,56.06,0,0,0,176,24Zm40,152a40,40,0,0,1-40,40H80a40,40,0,0,1-40-40V80A40,40,0,0,1,80,40h96a40,40,0,0,1,40,40ZM192,76a12,12,0,1,1-12-12A12,12,0,0,1,192,76Z"></path>
+                                    </svg>
+                                </div>
+                                <p class="mt-2 text-sm font-medium text-subtle-light dark:text-subtle-dark">Instagram</p>
+                            </a>
+                            <a href="#" class="group">
+                                <div class="social-icon rounded-full bg-primary/10 text-primary size-14 mx-auto">
+                                    <div class="skeleton h-6 w-6 rounded-full skeleton-overlay"></div>
+                                    <svg fill="currentColor" height="24" viewBox="0 0 256 256" width="24" xmlns="http://www.w3.org/2000/svg" class="skeleton-img">
+                                        <path d="M247.39,68.94A8,8,0,0,0,240,64H209.57A48.66,48.66,0,0,0,168.1,40a46.91,46.91,0,0,0-33.75,13.7A47.9,47.9,0,0,0,120,88v6.09C79.74,83.47,46.81,50.72,46.46,50.37a8,8,0,0,0-13.65,4.92c-4.31,47.79,9.57,79.77,22,98.18a110.93,110.93,0,0,0,21.88,24.2c-15.23,17.53-39.21,26.74-39.47,26.84a8,8,0,0,0-3.85,11.93c.75,1.12,3.75,5.05,11.08,8.72C53.51,229.7,65.48,232,80,232c70.67,0,129.72-54.42,135.75-124.44l29.91-29.9A8,8,0,0,0,247.39,68.94Zm-45,29.41a8,8,0,0,0-2.32,5.14C196,166.58,143.28,216,80,216c-10.56,0-18-1.4-23.22-3.08,11.51-6.25,27.56-17,37.88-32.48A8,8,0,0,0,92,169.08c-.47-.27-43.91-26.34-44-96,16,13,45.25,33.17,78.67,38.79A8,8,0,0,0,136,104V88a32,32,0,0,1,9.6-22.92A30.94,30.94,0,0,1,167.9,56c12.66.16,24.49,7.88,29.44,19.21A8,8,0,0,0,204.67,80h16Z"></path>
+                                    </svg>
+                                </div>
+                                <p class="mt-2 text-sm font-medium text-subtle-light dark:text-subtle-dark">X</p>
+                            </a>
+                            <a href="#" class="group">
+                                <div class="social-icon rounded-full bg-primary/10 text-primary size-14 mx-auto">
+                                    <div class="skeleton h-6 w-6 rounded-full skeleton-overlay"></div>
+                                    <svg fill="currentColor" height="24" viewBox="0 0 256 256" width="24" xmlns="http://www.w3.org/2000/svg" class="skeleton-img">
+                                        <path d="M216,24H40A16,16,0,0,0,24,40V216a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V40A16,16,0,0,0,216,24Zm0,192H40V40H216V216ZM96,112v64a8,8,0,0,1-16,0V112a8,8,0,0,1,16,0Zm88,28v36a8,8,0,0,1-16,0V140a20,20,0,0,0-40,0v36a8,8,0,0,1-16,0V112a8,8,0,0,1,15.79-1.78A36,36,0,0,1,184,140ZM100,84A12,12,0,1,1,88,72,12,12,0,0,1,100,84Z"></path>
+                                    </svg>
+                                </div>
+                                <p class="mt-2 text-sm font-medium text-subtle-light dark:text-subtle-dark">LinkedIn</p>
+                            </a>
+                        </div>
+                    </section>
+                </div>
+            </main>
+        </div>
+        <footer class="fixed bottom-0 left-0 right-0 bg-background-light dark:bg-background-dark border-t border-border-light dark:border-dark z-20 pb-safe-bottom">
+            <nav class="flex justify-around items-center h-16">
+                <a class="flex flex-col items-center justify-center gap-1 text-subtle-light dark:text-subtle-dark" href="home.html">
+                    <div class="flex items-center justify-center size-6">
+                        <svg fill="currentColor" height="24" viewBox="0 0 256 256" width="24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M224,115.55V208a16,16,0,0,1-16,16H168a16,16,0,0,1-16-16V168a8,8,0,0,0-8-8H112a8,8,0,0,0-8,8v40a16,16,0,0,1-16,16H48a16,16,0,0,1-16-16V115.55a16,16,0,0,1,5.17-11.78l80-75.48.11-.11a16,16,0,0,1,21.53,0,1.14,1.14,0,0,0,.11.11l80,75.48A16,16,0,0,1,224,115.55Z"></path>
+                        </svg>
+                    </div>
+                    <span class="text-xs font-medium">Home</span>
+                </a>
+                <a class="flex flex-col items-center justify-center gap-1 text-subtle-light dark:text-subtle-dark" href="services.html">
+                    <div class="flex items-center justify-center size-6">
+                        <svg fill="currentColor" height="24" viewBox="0 0 256 256" width="24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M216,56H176V48a24,24,0,0,0-24-24H104A24,24,0,0,0,80,48v8H40A16,16,0,0,0,24,72V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V72A16,16,0,0,0,216,56ZM96,48a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96ZM216,72v41.61A184,184,0,0,1,128,136a184.07,184.07,0,0,1-88-22.38V72Zm0,128H40V131.64A200.19,200.19,0,0,0,128,152a200.25,200.25,0,0,0,88-20.37V200ZM104,112a8,8,0,0,1,8-8h32a8,8,0,0,1,0,16H112A8,8,0,0,1,104,112Z"></path>
+                        </svg>
+                    </div>
+                    <span class="text-xs font-medium">Services</span>
+                </a>
+                <a class="flex flex-col items-center justify-center gap-1 text-subtle-light dark:text-subtle-dark" href="#">
+                    <div class="flex items-center justify-center size-6">
+                        <svg fill="currentColor" height="24" viewBox="0 0 256 256" width="24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M208,40H48A16,16,0,0,0,32,56v58.78c0,89.61,75.82,119.34,91,124.39a15.53,15.53,0,0,0,10,0c15.2-5.05,91-34.78,91-124.39V56A16,16,0,0,0,208,40Zm0,74.79c0,78.42-66.35,104.62-80,109.18-13.53-4.51-80-30.69-80-109.18V56H208ZM82.34,141.66a8,8,0,0,1,11.32-11.32L112,148.68l50.34-50.34a8,8,0,0,1,11.32,11.32l-56,56a8,8,0,0,1-11.32,0Z"></path>
+                        </svg>
+                    </div>
+                    <span class="text-xs font-medium">Trust</span>
+                </a>
+                <a class="flex flex-col items-center justify-center gap-1 text-primary" href="contact.html">
+                    <div class="flex items-center justify-center size-6 rounded-full bg-primary/20">
+                        <svg fill="currentColor" height="24" viewBox="0 0 256 256" width="24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M231.88,175.08A56.26,56.26,0,0,1,176,224C96.6,224,32,159.4,32,80A56.26,56.26,0,0,1,80.92,24.12a16,16,0,0,1,16.62,9.52l21.12,47.15,0,.12A16,16,0,0,1,117.39,96c-.18.27-.37.52-.57.77L96,121.45c7.49,15.22,23.41,31,38.83,38.51l24.34-20.71a8.12,8.12,0,0,1,.75-.56,16,16,0,0,1,15.17-1.4l.13.06,47.11,21.11A16,16,0,0,1,231.88,175.08Z"></path>
+                        </svg>
+                    </div>
+                    <span class="text-xs font-bold">Contact</span>
+                </a>
+            </nav>
+        </footer>
+    </div>
+    <script>
+        window.addEventListener('load', function() {
+            document.querySelectorAll('.skeleton').forEach(el => el.classList.remove('skeleton'));
+            document.querySelectorAll('.skeleton-img').forEach(img => img.classList.remove('skeleton-img'));
+        });
+    </script>
+</body>
+</html>
