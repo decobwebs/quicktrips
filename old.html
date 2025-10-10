@@ -94,6 +94,45 @@
       </div>
     </div>
   </section>
+
+
+
+  <!-- About Section -->
+  <section id="about" class="py-16 bg-brand-white">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
+        <!-- Image -->
+        <div class="w-full lg:w-1/2 relative" data-aos="fade-right" data-aos-delay="100">
+          <img 
+            src="assets/European.jpg" 
+            alt="Quick Trips team helping travelers" 
+            class="w-full h-64 sm:h-80 lg:h-96 object-cover rounded-lg shadow-md skeleton-img" 
+            loading="lazy" 
+            onload="this.classList.remove('skeleton-img');this.classList.add('loaded');" 
+            onerror="this.classList.add('failed');this.nextElementSibling.classList.remove('hidden');this.src='assets/fallback.jpg';"
+          >
+          <div class="image-error hidden absolute inset-0 flex items-center justify-center bg-brand-gray/80 text-brand-white text-center">Failed to load image</div>
+          <div class="shimmer absolute inset-0 skeleton"></div>
+        </div>
+        <!-- Text Content -->
+        <div class="w-full lg:w-1/2 flex flex-col gap-4" data-aos="fade-left" data-aos-delay="200">
+          <h2 class="text-3xl sm:text-4xl font-bold text-brand-navy">About Quick Trips</h2>
+          <p class="text-base sm:text-lg text-brand-gray leading-relaxed">
+            At Quick Trips, we make travel dreams a reality with personalized planning and expert support. 
+            From visa assistance to bespoke vacation packages, our dedicated team ensures seamless, 
+            stress-free journeys tailored to your needs. Let us guide you to unforgettable adventures 
+            around the globe.
+          </p>
+          <a 
+            href="#inquiry" 
+            class="inline-flex items-center justify-center bg-brand-sky text-brand-white font-bold py-3 px-6 rounded-lg hover:bg-brand-sky-dark hover:scale-[1.02] transition-all w-auto self-start"
+          >
+            Plan Your Trip
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
       
     
 
@@ -210,136 +249,7 @@
     </div>
   </div>
 
-  <!-- Modern Modal Script -->
-  <script>
-  const modal = document.getElementById('service-modal');
-  const modalBox = modal.querySelector('div');
-  const modalTitle = document.getElementById('modal-title');
-  const modalBody = document.getElementById('modal-body');
-  const modalList = document.getElementById('modal-list');
-  const closeModal = document.getElementById('close-modal');
-
-  // Service data
-  const servicesData = {
-    "Visa Application Assistance": {
-      description: "We provide expert visa support to make your travel stress-free.",
-      points: [
-        "Expert advice on visa requirements",
-        "Document checklist assistance",
-        "Application submission support",
-        "Tailored guidance for high approval rates"
-      ]
-    },
-    "Hotel Reservations": {
-      description: "Get exclusive deals on accommodations from budget stays to luxury resorts.",
-      points: [
-        "Access to a wide range of hotels",
-        "Exclusive partner discounts",
-        "Personalized recommendations",
-        "Best rate guarantee"
-      ]
-    },
-    "Logistics & On-the-Ground Support": {
-      description: "We arrange airport transfers and local transportation for a stress-free experience.",
-      points: [
-        "Airport transfers and local transportation",
-        "24/7 on-call support while in-destination",
-        "Seamless logistics planning",
-        "Stress-free travel experience"
-      ]
-    },
-    "Book Our Flight Ticket": {
-      description: "Access a wide range of flight options with competitive pricing and flexible booking.",
-      points: [
-        "Local and international ticketing",
-        "Competitive pricing via GDS and airline partnerships",
-        "Flexible booking options",
-        "Real-time flight availability"
-      ]
-    },
-    "Corporate & Group Travels": {
-      description: "Specialized travel solutions for corporate retreats and team-building trips.",
-      points: [
-        "Organizing corporate retreats and team-building trips",
-        "Venue sourcing and logistics management",
-        "Dedicated account manager for corporate clients",
-        "Customized group travel planning"
-      ]
-    },
-    "Bespoke Vacation Packages": {
-      description: "Custom travel packages for families, honeymoons, and adventure tours.",
-      points: [
-        "Custom packages for families and individuals",
-        "Honeymoons, adventure tours, and cultural immersions",
-        "Itinerary planning and activity bookings",
-        "End-to-end travel coordination"
-      ]
-    }
-  };
-
-  // Open Modal
-  document.querySelectorAll('.open-modal-btn').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      const title = btn.closest('.service-card').querySelector('h3').textContent.trim();
-      const service = servicesData[title];
-
-      modalTitle.textContent = title;
-      modalBody.textContent = service?.description || "Learn more about this service.";
-      modalList.innerHTML = "";
-      (service?.points || []).forEach(p => {
-        const li = document.createElement('li');
-        li.textContent = p;
-        modalList.appendChild(li);
-      });
-
-      modal.classList.remove('hidden');
-      requestAnimationFrame(() => {
-        modal.classList.add('flex', 'opacity-100');
-        modalBox.classList.remove('opacity-0', 'scale-95');
-        modalBox.classList.add('opacity-100', 'scale-100');
-      });
-    });
-  });
-
-  // Close Modal
-  closeModal.addEventListener('click', () => closeModalModal());
-  modal.addEventListener('click', (e) => {
-    if (e.target === modal) closeModalModal();
-  });
-  function closeModalModal() {
-    modalBox.classList.remove('opacity-100', 'scale-100');
-    modalBox.classList.add('opacity-0', 'scale-95');
-    modal.classList.remove('opacity-100');
-    setTimeout(() => {
-      modal.classList.add('hidden');
-      modal.classList.remove('flex');
-    }, 250);
-  }
-  </script>
-
-  <!-- Styles -->
-  <style>
-  #service-modal {
-    opacity: 0;
-  }
-  #service-modal.opacity-100 {
-    opacity: 1;
-  }
-  #service-modal div.scale-100 {
-    transform: scale(1);
-    opacity: 1;
-  }
-  #service-modal div.scale-95 {
-    transform: scale(0.95);
-    opacity: 0;
-  }
-  .service-card:hover {
-    transform: translateY(-4px);
-  }
-  .open-modal-btn:hover i {
-    transform: translateX(4px);
-  }
-  </style>
+  
 
 
   
@@ -451,7 +361,7 @@
 
       <div class="mt-12 text-center">
         <a class="bg-primary text-brand-navy font-bold py-3 px-8 rounded-lg hover:bg-primary/90 transition-colors duration-300" href="#inquiry">
-         
+          Plan My Trip
         </a>
       </div>
     </div>
@@ -674,14 +584,13 @@
       </div>
   </section>
 
-
+  <!-- Inquiry Form Section -->
   <section id="inquiry" class="py-16 text-brand-white">
-    <div class="container mx-auto px-4">
-      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12" data-aos="fade-up">Plan Your Trip</h2>
-
-      <form id="inquiry-form" class="max-w-2xl mx-auto space-y-6 bg-brand-white/10 p-6 sm:p-8 rounded-xl shadow-lg backdrop-blur-sm border border-brand-light/30">
+    <div class="container mx-auto px-2 sm:px-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-8 sm:mb-12" data-aos="fade-up">Plan Your Trip</h2>
+      <form id="inquiry-form" class="w-full max-w-lg mx-auto space-y-6 bg-brand-white/10 p-4 sm:p-6 md:p-8 rounded-xl shadow-lg backdrop-blur-sm border border-brand-light/30">
         <!-- Name + Email -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6">
           <div data-aos="fade-up" data-aos-delay="100">
             <label class="block text-sm font-medium mb-2" for="name">Name *</label>
             <input
@@ -705,9 +614,8 @@
             />
           </div>
         </div>
-
         <!-- Phone + Destination -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6">
           <div data-aos="fade-up" data-aos-delay="200">
             <label class="block text-sm font-medium mb-2" for="phone">Phone</label>
             <input
@@ -729,9 +637,8 @@
             />
           </div>
         </div>
-
         <!-- Travel Dates -->
-        <div class="grid grid-cols-1 gap-6" data-aos="fade-up" data-aos-delay="300">
+        <div class="grid grid-cols-1 gap-4" data-aos="fade-up" data-aos-delay="300">
           <label class="block text-sm font-medium mb-2" for="dates">Travel Dates</label>
           <input
             type="date"
@@ -740,38 +647,36 @@
             class="w-full rounded-lg bg-brand-light/80 text-brand-gray border border-brand-light focus:ring-2 focus:ring-brand-sky focus:border-brand-sky h-12 px-4 placeholder:text-brand-gray/70 transition-all"
           />
         </div>
-
         <!-- Services -->
         <div data-aos="fade-up" data-aos-delay="350">
           <h3 class="text-lg font-medium">Services Needed *</h3>
-          <div class="mt-4 grid grid-cols-2 sm:grid-cols-3 gap-4">
-            <label class="flex items-center gap-3 cursor-pointer">
+          <div class="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4">
+            <label class="flex items-center gap-2 cursor-pointer">
               <input type="checkbox" name="services[]" value="Local & International Ticketing" class="h-5 w-5 rounded border-brand-light text-brand-sky focus:ring-brand-sky bg-brand-light/80" />
               <span class="text-sm">Ticketing</span>
             </label>
-            <label class="flex items-center gap-3 cursor-pointer">
+            <label class="flex items-center gap-2 cursor-pointer">
               <input type="checkbox" name="services[]" value="Visa Application Assistance" class="h-5 w-5 rounded border-brand-light text-brand-sky focus:ring-brand-sky bg-brand-light/80" />
               <span class="text-sm">Visa Assistance</span>
             </label>
-            <label class="flex items-center gap-3 cursor-pointer">
+            <label class="flex items-center gap-2 cursor-pointer">
               <input type="checkbox" name="services[]" value="Hotel Reservations" class="h-5 w-5 rounded border-brand-light text-brand-sky focus:ring-brand-sky bg-brand-light/80" />
               <span class="text-sm">Hotel Booking</span>
             </label>
-            <label class="flex items-center gap-3 cursor-pointer">
+            <label class="flex items-center gap-2 cursor-pointer">
               <input type="checkbox" name="services[]" value="Bespoke Vacation Packages" class="h-5 w-5 rounded border-brand-light text-brand-sky focus:ring-brand-sky bg-brand-light/80" />
               <span class="text-sm">Vacation Packages</span>
             </label>
-            <label class="flex items-center gap-3 cursor-pointer">
+            <label class="flex items-center gap-2 cursor-pointer">
               <input type="checkbox" name="services[]" value="Corporate & Group Travel" class="h-5 w-5 rounded border-brand-light text-brand-sky focus:ring-brand-sky bg-brand-light/80" />
               <span class="text-sm">Corporate Travel</span>
             </label>
-            <label class="flex items-center gap-3 cursor-pointer">
+            <label class="flex items-center gap-2 cursor-pointer">
               <input type="checkbox" name="services[]" value="On-Ground Logistics Support" class="h-5 w-5 rounded border-brand-light text-brand-sky focus:ring-brand-sky bg-brand-light/80" />
               <span class="text-sm">Logistics Support</span>
             </label>
           </div>
         </div>
-
         <!-- Special Requests -->
         <div data-aos="fade-up" data-aos-delay="400">
           <label class="block text-sm font-medium mb-2" for="requests">Special Requests</label>
@@ -783,9 +688,8 @@
             class="w-full rounded-lg bg-brand-light/80 text-brand-gray border border-brand-light focus:ring-2 focus:ring-brand-sky focus:border-brand-sky p-4 placeholder:text-brand-gray/70 transition-all"
           ></textarea>
         </div>
-
         <!-- Submit Buttons -->
-        <div class="flex flex-col sm:flex-row gap-4 pt-4" data-aos="fade-up" data-aos-delay="500">
+        <div class="flex flex-col gap-3 sm:flex-row sm:gap-4 pt-2" data-aos="fade-up" data-aos-delay="500">
           <button
             type="submit"
             data-submit="whatsapp"
@@ -805,7 +709,6 @@
         </div>
       </form>
     </div>
-  </section>
   </section>
   <footer id="contact" class="bg-brand-navy text-brand-white py-12">
     <div class="container mx-auto px-4">
@@ -845,6 +748,8 @@
   <script>
   window.addEventListener('load', function() {
     document.querySelectorAll('.skeleton').forEach(el => el.classList.remove('skeleton'));
+    // Show inquiry section immediately after load (in case of slow AOS)
+    document.getElementById('inquiry').style.display = 'block';
   });
 
   document.getElementById('inquiry-form').addEventListener('submit', function(e) {
@@ -899,17 +804,157 @@
     });
   });
 
-  // FAQ Accordion Fix
+  // FAQ Accordion: Only one open at a time
   document.querySelectorAll('.faq-toggle').forEach((toggle) => {
     toggle.addEventListener('click', function() {
       const content = document.getElementById(toggle.getAttribute('aria-controls'));
       const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
-      
-      toggle.setAttribute('aria-expanded', !isExpanded);
-      if (content) content.classList.toggle('hidden');
+
+      // Close all others
+      document.querySelectorAll('.faq-toggle').forEach(btn => {
+        btn.setAttribute('aria-expanded', 'false');
+        const ans = document.getElementById(btn.getAttribute('aria-controls'));
+        if (ans) ans.classList.add('hidden');
+      });
+
+      // Open current if it was closed
+      if (!isExpanded && content) {
+        toggle.setAttribute('aria-expanded', 'true');
+        content.classList.remove('hidden');
+      }
     });
   });
   </script>
+  <!-- Modern Modal Script -->
+  <script>
+  const modal = document.getElementById('service-modal');
+  const modalBox = modal.querySelector('div');
+  const modalTitle = document.getElementById('modal-title');
+  const modalBody = document.getElementById('modal-body');
+  const modalList = document.getElementById('modal-list');
+  const closeModal = document.getElementById('close-modal');
+
+  // Service data
+  const servicesData = {
+    "Visa Application Assistance": {
+      description: "We provide expert visa support to make your travel stress-free.",
+      points: [
+        "Expert advice on visa requirements",
+        "Document checklist assistance",
+        "Application submission support",
+        "Tailored guidance for high approval rates"
+      ]
+    },
+    "Hotel Reservations": {
+      description: "Get exclusive deals on accommodations from budget stays to luxury resorts.",
+      points: [
+        "Access to a wide range of hotels",
+        "Exclusive partner discounts",
+        "Personalized recommendations",
+        "Best rate guarantee"
+      ]
+    },
+    "Logistics & On-the-Ground Support": {
+      description: "We arrange airport transfers and local transportation for a stress-free experience.",
+      points: [
+        "Airport transfers and local transportation",
+        "24/7 on-call support while in-destination",
+        "Seamless logistics planning",
+        "Stress-free travel experience"
+      ]
+    },
+    "Book Our Flight Ticket": {
+      description: "Access a wide range of flight options with competitive pricing and flexible booking.",
+      points: [
+        "Local and international ticketing",
+        "Competitive pricing via GDS and airline partnerships",
+        "Flexible booking options",
+        "Real-time flight availability"
+      ]
+    },
+    "Corporate & Group Travels": {
+      description: "Specialized travel solutions for corporate retreats and team-building trips.",
+      points: [
+        "Organizing corporate retreats and team-building trips",
+        "Venue sourcing and logistics management",
+        "Dedicated account manager for corporate clients",
+        "Customized group travel planning"
+      ]
+    },
+    "Bespoke Vacation Packages": {
+      description: "Custom travel packages for families, honeymoons, and adventure tours.",
+      points: [
+        "Custom packages for families and individuals",
+        "Honeymoons, adventure tours, and cultural immersions",
+        "Itinerary planning and activity bookings",
+        "End-to-end travel coordination"
+      ]
+    }
+  };
+
+  // Open Modal
+  document.querySelectorAll('.open-modal-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const title = btn.closest('.service-card').querySelector('h3').textContent.trim();
+      const service = servicesData[title];
+
+      modalTitle.textContent = title;
+      modalBody.textContent = service?.description || "Learn more about this service.";
+      modalList.innerHTML = "";
+      (service?.points || []).forEach(p => {
+        const li = document.createElement('li');
+        li.textContent = p;
+        modalList.appendChild(li);
+      });
+
+      modal.classList.remove('hidden');
+      requestAnimationFrame(() => {
+        modal.classList.add('flex', 'opacity-100');
+        modalBox.classList.remove('opacity-0', 'scale-95');
+        modalBox.classList.add('opacity-100', 'scale-100');
+      });
+    });
+  });
+
+  // Close Modal
+  closeModal.addEventListener('click', () => closeModalModal());
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeModalModal();
+  });
+  function closeModalModal() {
+    modalBox.classList.remove('opacity-100', 'scale-100');
+    modalBox.classList.add('opacity-0', 'scale-95');
+    modal.classList.remove('opacity-100');
+    setTimeout(() => {
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }, 250);
+  }
+  </script>
+
+  <!-- Styles -->
+  <style>
+  #service-modal {
+    opacity: 0;
+  }
+  #service-modal.opacity-100 {
+    opacity: 1;
+  }
+  #service-modal div.scale-100 {
+    transform: scale(1);
+    opacity: 1;
+  }
+  #service-modal div.scale-95 {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  .service-card:hover {
+    transform: translateY(-4px);
+  }
+  .open-modal-btn:hover i {
+    transform: translateX(4px);
+  }
+  </style>
 
 </body>
 </html>
