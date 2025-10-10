@@ -11,6 +11,7 @@
   <!-- AOS.js CDN for animations -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="preload" as="style" onload="this.rel='stylesheet'">
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
   <!-- Preload critical images -->
   <link rel="preload" as="image" href="assets/logo.png">
   <link rel="preload" as="image" href="assets/hero-image-1.jpg">
@@ -21,6 +22,12 @@
   <link rel="stylesheet" href="css/style.css" media="all" />
   <!-- Custom JS -->
   <script src="js/main.js" defer></script>
+  <!-- Manifest for PWA -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#068cf9">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="apple-touch-icon" href="assets/logo-192.png">
   <style>
     /* Skeleton loader styles */
     .skeleton {
@@ -44,9 +51,40 @@
     img.skeleton-img.failed {
       display: none;
     }
+
+    /* PWA Install Button styles */
+    #pwa-install-btn {
+      display: none;
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1000;
+      background: #068cf9;
+      color: #fff;
+      font-weight: 600;
+      border-radius: 9999px;
+      padding: 0.75rem 2rem;
+      box-shadow: 0 8px 32px 0 rgba(0,0,0,0.18);
+      border: none;
+      transition: opacity 0.3s, transform 0.3s;
+    }
+    #pwa-install-btn.show {
+      display: block;
+      opacity: 1;
+      pointer-events: auto;
+    }
+    #pwa-install-btn:active {
+      opacity: 0.8;
+      transform: translateX(-50%) scale(0.98);
+    }
   </style>
 </head>
 <body class="bg-brand-light text-brand-gray m-0 p-0 overflow-x-hidden">
+  <!-- PWA Install Button -->
+  <button id="pwa-install-btn">
+    <i class="fas fa-download mr-2"></i> Install App
+  </button>
   <!-- Navbar -->
    <header class="sticky top-0 bg-white/30 backdrop-blur-md text-brand-navy z-20 shadow-md">
     
@@ -88,7 +126,7 @@
           <p class="text-base sm:text-lg md:text-xl mb-6 max-w-2xl">Visa assistance and bespoke packages just for you.</p>
           <div class="space-x-4">
             <a href="#inquiry" class="bg-brand-sky text-brand-white px-4 py-2 sm:px-6 sm:py-3 rounded-md hover:bg-brand-navy transition-colors">Get Started</a>
-            <a href="https://wa.me/8155114430" target="_blank" class="border border-brand-sky text-brand-sky px-4 py-2 sm:px-6 sm:py-3 rounded-md hover:bg-brand-sky hover:text-brand-white transition-colors">Chat Now</a>
+            <a href="https://wa.me/+2349086223063" target="_blank" class=" bg-gray-50 border border-brand-sky text-brand-sky px-4 py-2 sm:px-6 sm:py-3 rounded-md hover:bg-brand-sky hover:text-brand-white transition-colors">Chat Now</a>
           </div>
         </div>
       </div>
@@ -104,7 +142,7 @@
         <!-- Image -->
         <div class="w-full lg:w-1/2 relative" data-aos="fade-right" data-aos-delay="100">
           <img 
-            src="assets/European.jpg" 
+            src="assets/european.jpg" 
             alt="Quick Trips team helping travelers" 
             class="w-full h-64 sm:h-80 lg:h-96 object-cover rounded-lg shadow-md skeleton-img" 
             loading="lazy" 
@@ -825,8 +863,8 @@
         </div>
         <div>
           <h3 class="text-xl font-semibold mb-4">Contact Us</h3>
-          <p>Email: <a href="mailto:info@quicktrips.com" class="hover:text-brand-sky">info@quicktrips.com</a></p>
-          <p>Phone: <a href="tel:+8155114430" class="hover:text-brand-sky">+8155114430</a></p>
+          <p>Email: <a href="mailto:info@quicktrips.com" class="hover:text-brand-sky">info@quicktripsng.com</a></p>
+          <p>Phone: <a href="tel:+8155114430" class="hover:text-brand-sky">+234 908 622 3063</a></p>
           <p>WhatsApp: <a href="https://wa.me/8155114430" target="_blank" class="hover:text-brand-sky">Chat with us</a></p>
         </div>
         <div>
@@ -930,7 +968,31 @@
       }
     });
   });
-  </script>
+
+  // PWA Service Worker registration
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function() {
+      navigator.serviceWorker.register('sw.js');
+    });
+  }
+
+  // PWA Install Button logic
+  let deferredPrompt;
+  const installBtn = document.getElementById('pwa-install-btn');
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    installBtn.classList.add('show');
+  });
+  installBtn.addEventListener('click', async () => {
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      await deferredPrompt.userChoice;
+      installBtn.classList.remove('show');
+      deferredPrompt = null;
+    }
+  });
+
   <!-- Modern Modal Script -->
   <script>
   const modal = document.getElementById('service-modal');
@@ -1037,30 +1099,5 @@
     }, 250);
   }
   </script>
-
-  <!-- Styles -->
-  <style>
-  #service-modal {
-    opacity: 0;
-  }
-  #service-modal.opacity-100 {
-    opacity: 1;
-  }
-  #service-modal div.scale-100 {
-    transform: scale(1);
-    opacity: 1;
-  }
-  #service-modal div.scale-95 {
-    transform: scale(0.95);
-    opacity: 0;
-  }
-  .service-card:hover {
-    transform: translateY(-4px);
-  }
-  .open-modal-btn:hover i {
-    transform: translateX(4px);
-  }
-  </style>
-
 </body>
 </html>
