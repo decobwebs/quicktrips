@@ -77,20 +77,7 @@
   <section id="home" class="relative hero-carousel min-h-screen m-0 p-0 overflow-hidden" role="region" aria-roledescription="carousel">
     <div class="absolute top-0 left-0 right-0 bottom-0 flex transition-transform duration-700 ease-in-out" id="carousel-slides">
       <!-- Carousel slides with skeleton -->
-      <div class="carousel-slide flex-shrink-0 w-full h-full relative will-change-transform skeleton">
-        <img src="assets/hero-image-1.jpg" alt="Plan your perfect trip" class="w-full h-full object-cover skeleton-img" loading="eager" onload="this.classList.remove('skeleton-img');this.classList.add('loaded');" onerror="this.classList.add('failed');this.nextElementSibling.classList.remove('hidden');this.src='assets/fallback.jpg';">
-        <div class="image-error hidden absolute inset-0 flex items-center justify-center bg-brand-gray/80 text-brand-white text-center">Failed to load image</div>
-        <div class="shimmer absolute inset-0"></div>
-        <div class="absolute inset-0 bg-brand-navy/40"></div>
-        <div class="absolute inset-0 flex flex-col justify-center items-center text-center text-brand-white px-4" data-aos="fade-up">
-          <h1 class="text-2xl sm:text-3xl md:text-5xl font-bold mb-4">Plan Your Perfect Trip with Quick Trips</h1>
-          <p class="text-base sm:text-lg md:text-xl mb-6 max-w-2xl">Discover seamless travel solutions tailored for you.</p>
-          <div class="space-x-4">
-            <a href="#inquiry" class="bg-brand-sky text-brand-white px-4 py-2 sm:px-6 sm:py-3 rounded-md hover:bg-brand-navy transition-colors">Plan My Trip</a>
-            <a href="https://wa.me/8155114430" target="_blank" class="border border-brand-sky text-brand-sky px-4 py-2 sm:px-6 sm:py-3 rounded-md hover:bg-brand-sky hover:text-brand-white transition-colors">Chat on WhatsApp</a>
-          </div>
-        </div>
-      </div>
+      
       <div class="carousel-slide flex-shrink-0 w-full h-full relative will-change-transform skeleton">
         <img src="assets/hero-image-2.jpg" alt="Explore the world effortlessly" class="w-full h-full object-cover skeleton-img" loading="lazy" onload="this.classList.remove('skeleton-img');this.classList.add('loaded');" onerror="this.classList.add('failed');this.nextElementSibling.classList.remove('hidden');this.src='assets/fallback.jpg';">
         <div class="image-error hidden absolute inset-0 flex items-center justify-center bg-brand-gray/80 text-brand-white text-center">Failed to load image</div>
@@ -105,55 +92,13 @@
           </div>
         </div>
       </div>
-      <div class="carousel-slide flex-shrink-0 w-full h-full relative will-change-transform skeleton">
-        <img src="assets/hero-image-3.jpg" alt="Your journey begins here" class="w-full h-full object-cover skeleton-img" loading="lazy" onload="this.classList.remove('skeleton-img');this.classList.add('loaded');" onerror="this.classList.add('failed');this.nextElementSibling.classList.remove('hidden');this.src='assets/fallback.jpg';">
-        <div class="image-error hidden absolute inset-0 flex items-center justify-center bg-brand-gray/80 text-brand-white text-center">Failed to load image</div>
-        <div class="shimmer absolute inset-0"></div>
-        <div class="absolute inset-0 bg-brand-navy/40"></div>
-        <div class="absolute inset-0 flex flex-col justify-center items-center text-center text-brand-white px-4" data-aos="fade-up">
-          <h1 class="text-2xl sm:text-3xl md:text-5xl font-bold mb-4">Your Journey Begins Here</h1>
-          <p class="text-base sm:text-lg md:text-xl mb-6 max-w-2xl">Corporate travel and logistics made simple.</p>
-          <div class="space-x-4">
-            <a href="#inquiry" class="bg-brand-sky text-brand-white px-4 py-2 sm:px-6 sm:py-3 rounded-md hover:bg-brand-navy transition-colors">Book Now</a>
-            <a href="https://wa.me/8155114430" target="_blank" class="border border-brand-sky text-brand-sky px-4 py-2 sm:px-6 sm:py-3 rounded-md hover:bg-brand-sky hover:text-brand-white transition-colors">Contact Us</a>
-          </div>
-        </div>
-      </div>
-      <div class="carousel-slide flex-shrink-0 w-full h-full relative will-change-transform skeleton">
-        <img src="assets/hero-image-4.jpg" alt="Your journey starts here" class="w-full h-full object-cover skeleton-img" loading="lazy" onload="this.classList.remove('skeleton-img');this.classList.add('loaded');" onerror="this.classList.add('failed');this.nextElementSibling.classList.remove('hidden');this.src='assets/fallback.jpg';">
-        <div class="image-error hidden absolute inset-0 flex items-center justify-center bg-brand-gray/80 text-brand-white text-center">Failed to load image</div>
-        <div class="shimmer absolute inset-0"></div>
-        <div class="absolute inset-0 bg-brand-navy/40"></div>
-        <div class="absolute inset-0 flex flex-col justify-center items-center text-center text-brand-white px-4" data-aos="fade-up">
-          <h1 class="text-2xl sm:text-3xl md:text-5xl font-bold mb-4">Your Journey Starts Here</h1>
-          <p class="text-base sm:text-lg md:text-xl mb-6 max-w-2xl">Corporate travel and logistics made simple.</p>
-          <div class="space-x-4">
-            <a href="#inquiry" class="bg-brand-sky text-brand-white px-4 py-2 sm:px-6 sm:py-3 rounded-md hover:bg-brand-navy transition-colors">Book Now</a>
-            <a href="https://wa.me/8155114430" target="_blank" class="border border-brand-sky text-brand-sky px-4 py-2 sm:px-6 sm:py-3 rounded-md hover:bg-brand-sky hover:text-brand-white transition-colors">Contact Us</a>
-          </div>
-        </div>
-      </div>
     </div>
-    <!-- Navigation Arrows -->
-    <button 
-    id="carousel-prev" 
-    class="hidden md:block absolute top-1/2 left-4 transform -translate-y-1/2 text-brand-white text-3xl opacity-70 hover:opacity-100 transition-opacity focus:outline-none" 
-    aria-label="Previous slide">
-    <i class="fas fa-chevron-left"></i>
-    </button>
-
-    <button 
-    id="carousel-next" 
-    class="hidden md:block absolute top-1/2 right-4 transform -translate-y-1/2 text-brand-white text-3xl opacity-70 hover:opacity-100 transition-opacity focus:outline-none" 
-    aria-label="Next slide">
-    <i class="fas fa-chevron-right"></i>
-    </button>
-
-    <!-- Navigation Dots -->
-    <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 carousel-dots" id="carousel-dots"></div>
   </section>
+      
+    
 
-  <!-- Services Section -->
+
+
   <!-- Services Section -->
   <section id="services" class="py-16 bg-brand-light">
     <div class="container mx-auto px-4">
@@ -404,7 +349,7 @@
       <div class="flex flex-col md:flex-row justify-between items-center mb-12">
         <h2 class="text-3xl sm:text-4xl font-bold text-brand-navy dark:text-brand-navy mb-4 md:mb-0">Most Popular Destinations</h2>
         <a class="inline-flex items-center text-brand-navy font-semibold hover:underline" href="#inquiry">
-          View All Destinations
+         
           <span class="material-symbols-outlined ml-1"></span>
         </a>
       </div>
@@ -421,7 +366,7 @@
         <!-- Scotland -->
         <a class="group relative overflow-hidden rounded-xl shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-2xl" href="#inquiry">
           <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-300 z-10"></div>
-          <img alt="Scotland" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6oJ_UHgm10lf7Hi01kDMZ2QMPH-AfdvuSM18QmCOCZx-MxAR0O1oWDdzSpiNAXSzk_lvHnIXHob0yzlACeREKnBExPor6Q7jBwTvBofrKEwI7q5KUC6MkizoC_avJ8rb9U_uCekn-9xMf27hcBC1SiqVCFI2ZKk2pwtPnzLtlyTqYViTSSbxr_RlGiSEB48gmDp128DtjMJbUja03TFBL2wCVL8jtSFMhUh-AROzbE9WiwCvC52vhwZL8TO4SK1iZKN9LRjYTjBU" />
+          <img alt="Scotland" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" src="assets/scotland.jpg" />
           <div class="absolute bottom-0 left-0 p-4 z-20">
             <h3 class="text-white text-lg font-bold">Scotland</h3>
           </div>
@@ -430,7 +375,7 @@
         <!-- Cyprus -->
         <a class="group relative overflow-hidden rounded-xl shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-2xl" href="#inquiry">
           <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-300 z-10"></div>
-          <img alt="Cyprus" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUtG_-j5ZDokyOiZy7ZJZaDcDCvOdWZnaJxPXTsf4_S4e-lTVeWUiIPJs-uF8DDl7hJXUaLHMHimYx3O61JbtORYZbF8K88I-snvnbbSMJYTxorCUVzI7FW9RiSwR_TO1FuMeflxdJ7nF5i-VbOn_A9tjFB8KOPs6vLiRutW0DRe1BcEZYRCzlUxYpJJPWn4AxGDaiyNTa_TjFaAPvyLX3Sl0sFlXgqxeSnAg4eBvpZaebEIvguPFwAz6FjxC3HVr6mIX7PJQCwFQ" />
+          <img alt="Cyprus" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" src="" />
           <div class="absolute bottom-0 left-0 p-4 z-20">
             <h3 class="text-white text-lg font-bold">Cyprus</h3>
           </div>
@@ -506,7 +451,7 @@
 
       <div class="mt-12 text-center">
         <a class="bg-primary text-brand-navy font-bold py-3 px-8 rounded-lg hover:bg-primary/90 transition-colors duration-300" href="#inquiry">
-          View All Destinations
+         
         </a>
       </div>
     </div>
@@ -918,12 +863,13 @@
 
     // Use actual multiline template
     const message = `Name: ${name}
-Email: ${email}
-Phone: ${phone}
-Destination: ${destination}
-Dates: ${dates}
-Services: ${services}
-Requests: ${requests}`;
+
+    Email: ${email}
+    Phone: ${phone}
+    Destination: ${destination}
+    Dates: ${dates}
+    Services: ${services}
+    Requests: ${requests}`;
 
     const encodedMessage = encodeURIComponent(message);
     const whatsappUrl = `https://wa.me/8155114430?text=${encodedMessage}`;
@@ -952,7 +898,18 @@ Requests: ${requests}`;
       if (img.closest('.skeleton')) img.closest('.skeleton').classList.remove('skeleton');
     });
   });
-</script>
+
+  // FAQ Accordion Fix
+  document.querySelectorAll('.faq-toggle').forEach((toggle) => {
+    toggle.addEventListener('click', function() {
+      const content = document.getElementById(toggle.getAttribute('aria-controls'));
+      const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+      
+      toggle.setAttribute('aria-expanded', !isExpanded);
+      if (content) content.classList.toggle('hidden');
+    });
+  });
+  </script>
 
 </body>
 </html>
