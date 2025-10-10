@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Quick Trips</title>
+    <link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
+    <link as="style" href="https://fonts.googleapis.com/css2?display=swap&family=Plus+Jakarta+Sans:wght@400;500;700;800" onload="this.rel='stylesheet'" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#068cf9",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#0f1a23",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+        }
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display overflow-hidden h-screen">
+    <div class="relative min-h-screen w-full h-screen">
+        <header class="absolute top-0 left-0 right-0 z-20 bg-transparent">
+            <nav class="flex items-center justify-between p-4 md:px-6">
+                <a href="#" class="flex items-center">
+                    <img src="assets/logo.png" alt="Quick Trips Logo" class="h-10 w-auto">
+                </a>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a class="text-white hover:text-primary transition-colors" href="#">Home</a>
+                    <a class="text-white hover:text-primary transition-colors" href="#">Services</a>
+                    <a class="text-white hover:text-primary transition-colors" href="#">Blog</a>
+                    <a class="text-white hover:text-primary transition-colors" href="mailto:quicktripstravelng@yahoo.com">Contact</a>
+                </div>
+                <button class="md:hidden text-white">
+                    <span class="material-symbols-outlined text-3xl">menu</span>
+                </button>
+            </nav>
+        </header>
+        <main class="relative h-screen overflow-hidden">
+            <div class="absolute inset-0">
+                <video autoplay loop muted class="w-full h-full object-cover">
+                    <source src="assets/vid3.mp4" type="video/mp4"/>
+                </video>
+            </div>
+            <div class="absolute inset-0 bg-background-dark/60"></div>
+            <div class="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-4">
+                <h1 class="text-4xl md:text-6xl font-extrabold leading-tight tracking-tight mb-4">Explore the World with Quick Trips</h1>
+                <p class="max-w-2xl text-lg md:text-xl text-white/90 mb-8">
+                    Your journey begins here. Discover unique destinations and create unforgettable memories with Quick Trips' expert travel planning.
+                </p>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 w-full max-w-md">
+                    <a href="home.html" class="w-full sm:w-auto bg-primary text-white font-bold py-3 px-6 rounded-lg hover:opacity-90 transition-opacity">
+                        Plan My Trip
+                    </a>
+                    <a href="https://wa.me/2349086223063?text=Hello%20Quick%20Trips,%20I%20have%20a%20question%20about%20my%20travel%20plans!" target="_blank" class="w-full sm:w-auto bg-transparent border-2 border-white text-white font-bold py-3 px-6 rounded-lg hover:bg-white hover:text-primary transition-colors">
+                        Chat on WhatsApp
+                    </a>
+                </div>
+            </div>
+        </main>
+      
+    </div>
+</body>
+</html>
