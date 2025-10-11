@@ -5,7 +5,7 @@ const urlsToCache = [
   '/manifest.json',
   '/css/style.css',
   '/js/main.js',
-  // Add other assets you want to cache
+
 ];
 
 // Install event
