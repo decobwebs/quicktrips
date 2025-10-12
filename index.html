@@ -791,6 +791,17 @@
             class="w-full rounded-lg bg-brand-light/80 text-brand-gray border border-brand-light focus:ring-2 focus:ring-brand-sky focus:border-brand-sky h-12 px-4 placeholder:text-brand-gray/70 transition-all"
           />
         </div>
+        <!-- Departure -->
+        <div class="grid grid-cols-1 gap-4" data-aos="fade-up" data-aos-delay="310">
+          <label class="block text-sm font-medium mb-2" for="departure">Departure</label>
+          <input
+            type="text"
+            id="departure"
+            name="departure"
+            placeholder="Enter your departure City, Airport or Date"
+            class="w-full rounded-lg bg-brand-light/80 text-brand-gray border border-brand-light focus:ring-2 focus:ring-brand-sky focus:border-brand-sky h-12 px-4 placeholder:text-brand-gray/70 transition-all"
+          />
+        </div>
         <!-- Services -->
         <div data-aos="fade-up" data-aos-delay="350">
           <h3 class="text-lg font-medium">Services Needed *</h3>
@@ -835,7 +846,7 @@
         <!-- Submit Buttons -->
         <div class="flex flex-col gap-3 sm:flex-row sm:gap-4 pt-2" data-aos="fade-up" data-aos-delay="500">
           <button
-            type="submit"
+            type="button"
             data-submit="whatsapp"
             class="flex-1 flex items-center justify-center gap-2 rounded-lg h-12 px-6 bg-brand-sky text-brand-white text-sm font-bold hover:bg-brand-sky-dark hover:scale-[1.02] transition-all"
           >
@@ -843,7 +854,7 @@
             <span>Send via WhatsApp</span>
           </button>
           <button
-            type="submit"
+            type="button"
             data-submit="email"
             class="flex-1 flex items-center justify-center gap-2 rounded-lg h-12 px-6 bg-brand-white text-brand-navy text-sm font-bold hover:bg-brand-sky hover:text-brand-white hover:scale-[1.02] transition-all"
           >
@@ -865,8 +876,8 @@
           <h3 class="text-xl font-semibold mb-4">Contact Us</h3>
           <p>Email: <a href="mailto:info@quicktrips.com" class="hover:text-brand-sky">info@quicktripsng.com</a></p>
           <p>Email: <a href="mailto:info@quicktrips.com" class="hover:text-brand-sky">travels@quicktripsng.com</a></p>
-          <p>Phone: <a href="tel:+8155114430" class="hover:text-brand-sky">+234 908 622 3063</a></p>
-          <p>WhatsApp: <a href="https://wa.me/8155114430" target="_blank" class="hover:text-brand-sky">Chat with us</a></p>
+          <p>Phone: <a href="tel:+2349086223063" class="hover:text-brand-sky">+234 908 622 3063</a></p>
+          <p>WhatsApp: <a href="https://wa.me/+2349086223063" target="_blank" class="hover:text-brand-sky">Chat with us</a></p>
         </div>
         <div>
           <h3 class="text-xl font-semibold mb-4">Follow Us</h3>
@@ -897,39 +908,72 @@
     document.getElementById('inquiry').style.display = 'block';
   });
 
-  document.getElementById('inquiry-form').addEventListener('submit', function(e) {
-    e.preventDefault();
+  // Remove/disable traditional submit handler
+  // Wait for DOM ready to attach button click handlers
+  document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('inquiry-form');
+    if (!form) return;
 
-    const form = e.target;
-    const name = form.name.value.trim();
-    const email = form.email.value.trim();
-    const phone = form.phone.value.trim();
-    const destination = form.destination.value.trim();
-    const dates = form.dates.value.trim();
-    const services = Array.from(form.querySelectorAll('input[name="services[]"]:checked'))
-      .map(cb => cb.value)
-      .join(', ');
-    const requests = form.requests.value.trim();
+    const whatsappBtn = form.querySelector('button[data-submit="whatsapp"]');
+    const emailBtn = form.querySelector('button[data-submit="email"]');
 
-    // Use actual multiline template
-    const message = `Name: ${name}
+    function collectFormData() {
+      const name = form.name.value.trim();
+      const email = form.email.value.trim();
+      const phone = form.phone.value.trim();
+      const destination = form.destination.value.trim();
+      const dates = form.dates.value.trim();
+      const departure = form.departure.value.trim();
+      const services = Array.from(form.querySelectorAll('input[name="services[]"]:checked'))
+        .map(cb => cb.value)
+        .join(', ');
+      const requests = form.requests.value.trim();
 
-    Email: ${email}
-    Phone: ${phone}
-    Destination: ${destination}
-    Dates: ${dates}
-    Services: ${services}
-    Requests: ${requests}`;
+      // Basic validation
+      if (!name || !email) {
+        alert('Please fill in the required fields: Name and Email');
+        return null;
+      }
+      if (!services) {
+        alert('Please select at least one service');
+        return null;
+      }
 
-    const encodedMessage = encodeURIComponent(message);
-    const whatsappUrl = `https://wa.me/8155114430?text=${encodedMessage}`;
-    const mailtoUrl = `mailto:cobwebb784@gmail.com?subject=Trip Inquiry&body=${encodedMessage}`;
+      // Compose message
+      const message = `Name: ${name}
+Email: ${email}
+Phone: ${phone}
+Destination: ${destination}
+Dates: ${dates}
+Departure: ${departure}
+Services: ${services}
+Requests: ${requests}`;
 
-    const submitType = document.activeElement.getAttribute('data-submit');
-    if (submitType === 'whatsapp') {
-      window.open(whatsappUrl, '_blank');
-    } else {
-      window.location.href = mailtoUrl;
+      return message;
+    }
+
+    if (whatsappBtn) {
+      whatsappBtn.addEventListener('click', function() {
+        const message = collectFormData();
+        if (!message) return;
+        // Replace newlines for better compatibility, though not strictly needed for WhatsApp
+        const formattedMessage = message.replace(/\n/g, '\r\n');
+        const encodedMessage = encodeURIComponent(formattedMessage);
+        const whatsappUrl = `https://wa.me/+2349086223063?text=${encodedMessage}`;
+        window.open(whatsappUrl, '_blank');
+      });
+    }
+
+    if (emailBtn) {
+      emailBtn.addEventListener('click', function() {
+        const message = collectFormData();
+        if (!message) return;
+        // Replace newlines with \r\n for better email client compatibility
+        const formattedMessage = message.replace(/\n/g, '\r\n');
+        const encodedMessage = encodeURIComponent(formattedMessage);
+        const mailtoUrl = `mailto:travels@quicktripsng.com?subject=Trip Inquiry&body=${encodedMessage}`;
+        window.location.href = mailtoUrl;
+      });
     }
   });
 
@@ -993,9 +1037,10 @@
       deferredPrompt = null;
     }
   });
+</script>
 
-  <!-- Modern Modal Script -->
-  <script>
+<!-- Modern Modal Script -->
+<script>
   const modal = document.getElementById('service-modal');
   const modalBox = modal.querySelector('div');
   const modalTitle = document.getElementById('modal-title');
@@ -1099,6 +1144,6 @@
       modal.classList.remove('flex');
     }, 250);
   }
-  </script>
+</script>   
 </body>
 </html>
