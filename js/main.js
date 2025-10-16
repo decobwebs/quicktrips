@@ -1,3 +1,65 @@
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .then(registration => {
+        console.log('SW registered:', registration.scope);
+        
+        // Detect updates
+        registration.addEventListener('updatefound', () => {
+          const newWorker = registration.installing;
+          newWorker.addEventListener('statechange', () => {
+            if (newWorker.state === 'installed') {
+              if (navigator.serviceWorker.controller) {
+                // Show update notification
+                showUpdateUI();
+              }
+            }
+          });
+        });
+      })
+      .catch(err => console.error('SW registration failed:', err));
+
+    // Reload when new SW activates
+    navigator.serviceWorker.addEventListener('controllerchange', () => {
+      window.location.reload();
+    });
+
+    // Listen for update messages from SW
+    navigator.serviceWorker.addEventListener('message', event => {
+      if (event.data.type === 'UPDATE_DETECTED') {
+        console.log('Background update completed');
+      }
+    });
+  });
+
+  // Simple update UI
+  function showUpdateUI() {
+    const banner = document.createElement('div');
+    banner.id = 'sw-update-banner';
+    banner.className = 'fixed top-4 right-4 bg-blue-500 text-white p-3 rounded shadow-lg z-50 flex items-center gap-2';
+    banner.innerHTML = `
+      <span>📦 New updates available</span>
+      <button onclick="window.location.reload()" class="bg-white text-blue-500 px-2 py-1 rounded text-sm">
+        Update
+      </button>
+    `;
+    document.body.appendChild(banner);
+    
+    // Auto-remove after 10s
+    setTimeout(() => banner.remove(), 10000);
+  }
+
+  // Expose refresh function for development
+  window.refreshCache = () => {
+    if (navigator.serviceWorker.controller) {
+      navigator.serviceWorker.controller.postMessage({ type: 'FORCE_UPDATE' });
+    }
+  };
+}
+
+
+
+
 // Initialize AOS for animations
 AOS.init({ duration: 800, once: true });
 
