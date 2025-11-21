@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SecureConnect Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+
+        .nav-link {
+            @apply px-4 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-200 transition-colors;
+        }
+
+        .nav-link.active {
+            @apply bg-gray-800 text-white shadow-md;
+        }
+
+        .blinking-dot {
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.2;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body class="antialiased">
+
+
+    <div class="min-h-screen bg-gray-100 text-gray-800">
+        <!-- Header -->
+        <header class="bg-white shadow-md">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-between h-16">
+                    <div class="flex items-center">
+                        <span class="text-2xl font-extrabold text-gray-800">SecureConnect</span>
+                        <span class="ml-2 text-xs font-semibold text-red-600 uppercase">CSH Dashboard</span>
+                    </div>
+                    <nav class="flex space-x-2">
+                        <button class="nav-link active" data-tab="live-operations">Live Operations</button>
+                        <button class="nav-link" data-tab="analytics">National Analytics</button>
+                        <button class="nav-link" data-tab="about">About</button>
+                    </nav>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <!-- Live Operations Tab -->
+            <section id="live-operations" class="tab-content">
+                <div class="text-center mb-8">
+                    <h1 class="text-3xl font-bold">Live National Threat Overview</h1>
+                    <p class="text-gray-600 mt-2">Monitoring real-time security alerts across Nigeria. New alerts are
+                        simulated every few seconds.</p>
+                </div>
+
+                <div class="mb-6">
+                    <div id="filters" class="flex flex-wrap justify-center gap-2">
+                        <button data-filter="all"
+                            class="filter-btn bg-gray-800 text-white px-4 py-2 text-sm rounded-full">All Alerts</button>
+                        <button data-filter="Lagos"
+                            class="filter-btn bg-white text-gray-700 px-4 py-2 text-sm rounded-full border">Lagos</button>
+                        <button data-filter="Abuja (FCT)"
+                            class="filter-btn bg-white text-gray-700 px-4 py-2 text-sm rounded-full border">Abuja
+                            (FCT)</button>
+                        <button data-filter="Rivers"
+                            class="filter-btn bg-white text-gray-700 px-4 py-2 text-sm rounded-full border">Rivers</button>
+                        <button data-filter="Kano"
+                            class="filter-btn bg-white text-gray-700 px-4 py-2 text-sm rounded-full border">Kano</button>
+                        <button data-filter="Borno"
+                            class="filter-btn bg-white text-gray-700 px-4 py-2 text-sm rounded-full border">Borno</button>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <div class="lg:col-span-2 bg-white p-4 rounded-xl shadow-lg">
+                        <h2 class="text-lg font-semibold mb-4 text-center">Real-time Alert Map</h2>
+                        <div id="map-container"
+                            class="relative w-full h-96 lg:h-[500px] bg-gray-200 rounded-lg overflow-hidden">
+
+                        </div>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl shadow-lg">
+                        <h2 class="text-lg font-semibold mb-4 text-center">Live Alerts Feed</h2>
+                        <ul id="alerts-feed" class="h-96 lg:h-[500px] overflow-y-auto space-y-3 pr-2">
+
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- National Analytics Tab -->
+            <section id="analytics" class="tab-content hidden">
+                <div class="text-center mb-8">
+                    <h1 class="text-3xl font-bold">National Security Analytics</h1>
+                    <p class="text-gray-600 mt-2">Analyzing historical and predictive data from over 30 million
+                        incidents.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div class="bg-white p-6 rounded-xl shadow-lg text-center">
+                        <h3 class="text-lg font-semibold text-gray-600">Registered User Base</h3>
+                        <p class="text-5xl font-extrabold text-gray-800 mt-2">20,000,000+</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-lg text-center">
+                        <h3 class="text-lg font-semibold text-gray-600">Total Incidents Recorded</h3>
+                        <p class="text-5xl font-extrabold text-red-600 mt-2">30,000,000+</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div class="bg-white p-6 rounded-xl shadow-lg">
+                        <h2 class="text-xl font-semibold mb-4 text-center">Threat Distribution by State</h2>
+                        <div class="chart-container">
+                            <canvas id="threatDistributionChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-lg">
+                        <h2 class="text-xl font-semibold mb-4 text-center">Incident Trend Analysis (Last 30 Days)</h2>
+                        <div class="chart-container">
+                            <canvas id="incidentTrendChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-lg lg:col-span-2">
+                        <h2 class="text-xl font-semibold mb-4 text-center">Key Contextual Factors for Predictive Alerts
+                        </h2>
+                        <div class="chart-container max-w-sm">
+                            <canvas id="contextualFactorsChart"></canvas>
+                        </div>
+                        <div class="flex justify-center mt-6">
+                            <button id="generate-scenario-btn"
+                                class="bg-gray-800 text-white font-semibold py-2 px-6 rounded-full transition-colors hover:bg-gray-700">✨
+                                Generate Predictive Scenario</button>
+                        </div>
+                        <div id="scenario-output" class="mt-6 bg-gray-50 p-4 rounded-lg text-sm text-gray-700 hidden">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- About Tab -->
+            <section id="about" class="tab-content hidden">
+                <div class="bg-white p-8 rounded-xl shadow-lg max-w-4xl mx-auto">
+                    <h1 class="text-3xl font-bold text-center mb-6">About the SecureConnect System</h1>
+                    <div class="prose max-w-none text-gray-700">
+                        <p class="text-lg">SecureConnect is a next-generation security ecosystem designed for Nigeria.
+                            It provides a silent, secure, and reliable way for citizens to alert authorities during
+                            emergencies, even in low-connectivity environments.</p>
+                        <h2 class="font-semibold">The Problem We Solve</h2>
+                        <p>With rising insecurity from banditry, robbery, and insurgency, victims often cannot call for
+                            help without alerting attackers. Existing emergency systems are hampered by unreliable
+                            internet and cellular networks. SecureConnect bridges this critical gap by providing a
+                            stealthy, resilient communication channel between citizens and security responders.</p>
+                        <h2 class="font-semibold">Key Features</h2>
+                        <ul>
+                            <li><strong>One-Tap Alerting:</strong> A simple 3-level system (Suspicious, Crime in
+                                Progress, Victim in Danger) for rapid reporting.</li>
+                            <li><strong>Offline Fallback:</strong> If internet is unavailable, the app automatically
+                                sends a secure, encrypted SMS alert.</li>
+                            <li><strong>Stealth-First Design:</strong> A decoy user interface ensures the user's safety
+                                is prioritized during a crisis.</li>
+                            <li><strong>Real-time Dashboard:</strong> This dashboard provides security agencies with a
+                                live, actionable overview of national threats, enabling data-driven resource deployment
+                                and proactive responses.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const states = [
+                { name: "Lagos", coords: { top: '88%', left: '18%' }, incidents: 5500000 },
+                { name: "Kano", coords: { top: '35%', left: '45%' }, incidents: 3200000 },
+                { name: "Rivers", coords: { top: '92%', left: '38%' }, incidents: 2800000 },
+                { name: "Abuja (FCT)", coords: { top: '55%', left: '40%' }, incidents: 2500000 },
+                { name: "Borno", coords: { top: '30%', left: '75%' }, incidents: 4100000 },
+                { name: "Kaduna", coords: { top: '45%', left: '42%' }, incidents: 2100000 },
+                { name: "Oyo", coords: { top: '70%', left: '20%' }, incidents: 1800000 },
+                { name: "Delta", coords: { top: '85%', left: '30%' }, incidents: 1500000 }
+            ];
+            const alertTypes = [
+                { level: 'Suspicious Activity', color: 'bg-yellow-400', icon: '🟡' },
+                { level: 'Crime in Progress', color: 'bg-orange-500', icon: '🟠' },
+                { level: 'Victim in Danger', color: 'bg-red-600', icon: '🔴' }
+            ];
+            const aiFactors = {
+                'Social Media Chatter': 60,
+                'Economic Indicators': 25,
+                'Historical Data': 10,
+                'Environmental Factors': 5
+            };
+            let liveAlerts = [];
+            let currentFilter = 'all';
+
+            const navLinks = document.querySelectorAll('.nav-link');
+            const tabContents = document.querySelectorAll('.tab-content');
+            const mapContainer = document.getElementById('map-container');
+            const alertsFeed = document.getElementById('alerts-feed');
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const generateScenarioBtn = document.getElementById('generate-scenario-btn');
+            const scenarioOutput = document.getElementById('scenario-output');
+
+            const API_KEY = "";
+            const API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=" + API_KEY;
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    const tab = link.dataset.tab;
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    link.classList.add('active');
+                    tabContents.forEach(content => {
+                        content.id === tab ? content.classList.remove('hidden') : content.classList.add('hidden');
+                    });
+                });
+            });
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    currentFilter = button.dataset.filter;
+                    filterButtons.forEach(btn => btn.classList.remove('bg-gray-800', 'text-white'));
+                    filterButtons.forEach(btn => btn.classList.add('bg-white', 'text-gray-700'));
+                    button.classList.add('bg-gray-800', 'text-white');
+                    button.classList.remove('bg-white', 'text-gray-700');
+                    renderMap();
+                    renderFeed();
+                });
+            });
+
+            generateScenarioBtn.addEventListener('click', async () => {
+                scenarioOutput.classList.remove('hidden');
+                scenarioOutput.innerHTML = <p class="text-center">Generating scenario, please wait...</p>;
+
+                const prompt = `Based on the following data points for a security threat analysis in Nigeria, draft a short, plausible security scenario. The scenario should be one paragraph long, realistic, and written from an intelligence analyst's perspective.
+                
+                Threat Distribution by State (Total Incidents):
+                ${states.map(s => ${ s.name }: ${ s.incidents.toLocaleString() } incidents).join('\n')}
+
+                Key Contextual Factors for Predictive Alerts (Weighted):
+                ${Object.entries(aiFactors).map(([factor, weight]) => ${ factor }: ${ weight } %).join('\n')}
+
+                Please combine these insights to create a single paragraph. Focus on the most prevalent threats and the highest weighted contextual factors.`;
+
+                try {
+                    const response = await fetch(API_URL, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] })
+                    });
+                    if (!response.ok) throw new Error(HTTP error! status: ${ response.status });
+                    const result = await response.json();
+                    const generatedText = result.candidates[0].content.parts[0].text;
+                    scenarioOutput.innerHTML = generatedText;
+                } catch (error) {
+                    console.error("Error generating scenario:", error);
+                    scenarioOutput.innerHTML = <p class="text-red-500">Failed to generate scenario. Please try again.</p>;
+                }
+            });
+
+            const renderMap = () => {
+                const existingDots = mapContainer.querySelectorAll('.alert-dot');
+                existingDots.forEach(dot => dot.remove());
+
+                const filteredAlerts = currentFilter === 'all' ? liveAlerts : liveAlerts.filter(a => a.state.name === currentFilter);
+
+                filteredAlerts.forEach(alert => {
+                    const dot = document.createElement('div');
+                    dot.className = alert - dot absolute w - 3 h - 3 rounded - full ${ alert.type.color } transform - translate - x - 1 / 2 - translate - y - 1 / 2 shadow - lg border - 2 border - white;
+                    if (alert.isNew) {
+                        dot.classList.add('blinking-dot');
+                    }
+                    dot.style.top = alert.state.coords.top;
+                    dot.style.left = alert.state.coords.left;
+                    dot.title = ${ alert.type.level } in ${ alert.state.name };
+                    mapContainer.appendChild(dot);
+                });
+            };
+
+            const renderFeed = () => {
+                alertsFeed.innerHTML = '';
+                const filteredAlerts = (currentFilter === 'all' ? liveAlerts : liveAlerts.filter(a => a.state.name === currentFilter))
+                    .slice(0, 50);
+
+                if (filteredAlerts.length === 0) {
+                    alertsFeed.innerHTML = <li class="text-center text-gray-500 pt-8">No alerts for this filter.</li>;
+                    return;
+                }
+
+                filteredAlerts.forEach(alert => {
+                    const li = document.createElement('li');
+                    li.className = 'bg-gray-50 p-3 rounded-lg flex items-start space-x-3';
+                    if (alert.isNew) {
+                        li.classList.add('border-l-4', border - ${ alert.type.color.split('-')[1] } - 500);
+                    }
+                    li.innerHTML = `
+                        <span class="text-xl">${alert.type.icon}</span>
+                        <div class="flex-grow">
+                            <p class="font-semibold text-sm">${alert.type.level}</p>
+                            <p class="text-xs text-gray-600">${alert.state.name}</p>
+                            <p class="text-xs text-gray-400">${alert.time}</p>
+                        </div>
+                        <button class="analyze-btn bg-gray-800 text-white text-xs px-2 py-1 rounded-full whitespace-nowrap">✨ Analyze</button>
+                    `;
+                    alertsFeed.appendChild(li);
+
+                    li.querySelector('.analyze-btn').addEventListener('click', async () => {
+                        const loadingMessage = li.querySelector('.analysis-output');
+                        if (loadingMessage) loadingMessage.remove();
+
+                        const loadingDiv = document.createElement('div');
+                        loadingDiv.className = 'analysis-output mt-2 text-xs text-gray-500 italic';
+                        loadingDiv.innerHTML = 'Analyzing...';
+                        li.appendChild(loadingDiv);
+
+                        const prompt = As a security intelligence analyst, provide a very concise, one-sentence summary of the potential security risk based on this alert: a '${alert.type.level}' alert originating from '${alert.state.name}' at '${alert.time}'.Focus on the immediate actionable insight for a security team.;
+
+                        try {
+                            const response = await fetch(API_URL, {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] })
+                            });
+                            if (!response.ok) throw new Error(HTTP error! status: ${ response.status });
+                            const result = await response.json();
+                            const summary = result.candidates[0].content.parts[0].text;
+                            loadingDiv.textContent = summary;
+                        } catch (error) {
+                            console.error("Error analyzing alert:", error);
+                            loadingDiv.textContent = "Failed to analyze.";
+                        }
+                    });
+                });
+            };
+
+            const addNewAlert = () => {
+                liveAlerts.forEach(a => a.isNew = false);
+                const randomState = states[Math.floor(Math.random() * states.length)];
+                const randomType = alertTypes[Math.floor(Math.random() * alertTypes.length)];
+                const newAlert = {
+                    state: randomState,
+                    type: randomType,
+                    time: new Date().toLocaleTimeString(),
+                    isNew: true
+                };
+                liveAlerts.unshift(newAlert);
+                if (liveAlerts.length > 200) {
+                    liveAlerts.pop();
+                }
+                renderMap();
+                renderFeed();
+            };
+
+            const createCharts = () => {
+                Chart.defaults.font.family = "'Inter', sans-serif";
+
+                new Chart(document.getElementById('threatDistributionChart'), {
+                    type: 'bar',
+                    data: {
+                        labels: states.map(s => s.name),
+                        datasets: [{
+                            label: 'Total Incidents',
+                            data: states.map(s => s.incidents),
+                            backgroundColor: 'rgba(220, 38, 38, 0.7)',
+                            borderColor: 'rgba(220, 38, 38, 1)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        indexAxis: 'y',
+                        scales: {
+                            x: {
+                                beginAtZero: true,
+                                ticks: {
+                                    callback: (value) => new Intl.NumberFormat('en-US', { notation: 'compact' }).format(value)
+                                }
+                            }
+                        },
+                        plugins: { legend: { display: false } }
+                    }
+                });
+
+                const trendLabels = [...Array(30).keys()].map(i => Day ${ i + 1});
+        const trendData = trendLabels.map(() => 50000 + Math.random() * 40000);
+        new Chart(document.getElementById('incidentTrendChart'), {
+            type: 'line',
+            data: {
+                labels: trendLabels,
+                datasets: [{
+                    label: 'Daily Incidents',
+                    data: trendData,
+                    fill: true,
+                    backgroundColor: 'rgba(239, 68, 68, 0.1)',
+                    borderColor: 'rgba(220, 38, 38, 1)',
+                    tension: 0.3
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: { y: { beginAtZero: true } },
+                plugins: { legend: { display: false } }
+            }
+        });
+
+        new Chart(document.getElementById('contextualFactorsChart'), {
+            type: 'doughnut',
+            data: {
+                labels: Object.keys(aiFactors),
+                datasets: [{
+                    data: Object.values(aiFactors),
+                    backgroundColor: ['#ef4444', '#f97316', '#eab308', '#84cc16']
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    }
+                }
+            }
+        });
+            };
+
+        for (let i = 0; i < 30; i++) addNewAlert();
+        liveAlerts.forEach(a => a.isNew = false);
+        renderMap();
+        renderFeed();
+        createCharts();
+        setInterval(addNewAlert, 3000);
+        });
+    </script>
+</body>
+
+</html>
